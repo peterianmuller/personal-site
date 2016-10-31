@@ -1,0 +1,73 @@
+<p>This problem comes from <a href="https://www.codewars.com/users/GiacomoSorbi">Giacomo Sorbi</a>.</p>
+<p>The goal is to here is to have a function take in an integer and have that integer return the next biggest number with those same digits.</p>
+<p>Some examples listed on the codewars profile for this problem:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="at">nextBigger</span>(<span class="dv">12</span>)<span class="op">==</span><span class="dv">21</span>
+<span class="at">nextBigger</span>(<span class="dv">513</span>)<span class="op">==</span><span class="dv">531</span>
+<span class="at">nextBigger</span>(<span class="dv">2017</span>)<span class="op">==</span><span class="dv">2071</span></code></pre></div>
+<p>I'd like to walk through a dope solution that I found. Shout outs to <a href="https://www.codewars.com/users/groxxda">groxxda</a> and <a href="https://www.codewars.com/users/Sagobunny">Sagobunny</a>!</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+<span class="kw">function</span> <span class="at">nextBigger</span>(n)<span class="op">{</span>
+
+  <span class="co">//create an array of single string characters for each digit in the input integer.</span>
+  <span class="kw">var</span> chars <span class="op">=</span> <span class="va">n</span>.<span class="at">toString</span>().<span class="at">split</span>(<span class="st">&#39;&#39;</span>)<span class="op">;</span>
+
+ 
+  
+  <span class="co">//set a variable i to be the one less than the length of the array. Note that this number will also correspond to the terminal index of the array.</span>
+  <span class="kw">var</span> i <span class="op">=</span> <span class="va">chars</span>.<span class="at">length</span><span class="dv">-1</span><span class="op">;</span>
+ 
+
+  
+  <span class="cf">while</span>(i <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">{</span>
+
+  <span class="co">//comparing the last element in the chars array to the element to its left. If the last digit is greater than the previous digit, than break out. This means that a bigger integer can be made. </span>
+  
+  <span class="cf">if</span> (chars[i]<span class="op">&gt;</span>chars[i<span class="dv">-1</span>]) <span class="cf">break</span><span class="op">;</span>
+    
+  <span class="co">//If the terminal element of the chars array is not larger than the digit that comes before it, than decrement one from i. This will now compare the penultimate element to the element that comes before it.</span>
+  
+  i<span class="op">--;</span>
+  
+  <span class="op">}</span>
+  
+  <span class="co">//if we have compared all elements and the elements to the left of each element and the element that comes to the right is always smaller, than i will be 0 and we will break out of the while loop.</span>
+  <span class="cf">if</span> (i <span class="op">==</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span>
+  
+
+  <span class="co">// if an element to the right is larger than its neighbor to the left, than i represents the index of the bigger element. suf will represent an array of all elements starting from the element at index i and will be a new array that is removed from chars and saved to suf.</span>
+
+  <span class="kw">var</span> suf <span class="op">=</span> <span class="va">chars</span>.<span class="at">splice</span>(i).<span class="at">sort</span>()<span class="op">;</span>
+
+  <span class="co">//t is the terminal element of the remaining elements of char.</span>
+  <span class="kw">var</span> t <span class="op">=</span> chars[<span class="va">chars</span>.<span class="at">length</span><span class="dv">-1</span>]<span class="op">;</span>
+  
+  <span class="co">//iterate for all elements in suf</span>
+  <span class="cf">for</span> (i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">suf</span>.<span class="at">length</span><span class="op">;</span> <span class="op">++</span>i) <span class="op">{</span>
+    
+  <span class="co">//check if suf has a digit that is bigger than the last element in what remains in char. If it does, i represent the index where the bigger integer exists. If there is no digit in suf that is larger than the terminal element of chars than i will be the terminal element of suf.</span>
+  
+  <span class="cf">if</span> (suf[i] <span class="op">&gt;</span> t) <span class="cf">break</span><span class="op">;</span>
+  
+  <span class="op">}</span>
+  
+  <span class="co">//Set the last element of chars to either 1) the larger element from suf or 2) the terminal element of suf.</span>
+  chars[<span class="va">chars</span>.<span class="at">length</span><span class="dv">-1</span>] <span class="op">=</span> suf[i]
+  
+  <span class="co">//Set either 1) the larger element of suf or 2) the last element of suf to t. t is the terminal element of chars.</span>
+  suf[i] <span class="op">=</span> t<span class="op">;</span>
+  
+
+  <span class="co">//concat chars array with the suf array</span>
+  <span class="kw">var</span> res <span class="op">=</span> <span class="va">chars</span>.<span class="at">concat</span>(suf)<span class="op">;</span>
+  
+  <span class="co">//turn res back into an integer by first turning into a string with .join and then parseInt to convert the string to an integer.</span>
+  <span class="kw">var</span> num <span class="op">=</span> <span class="at">parseInt</span>(<span class="va">res</span>.<span class="at">join</span>(<span class="st">&#39;&#39;</span>))<span class="op">;</span>
+ 
+  <span class="cf">return</span> num<span class="op">;</span>
+  
+<span class="op">};</span>
+
+<span class="at">nextBigger</span>(<span class="dv">12</span>)<span class="op">;</span> <span class="co">//21</span>
+<span class="at">nextBigger</span>(<span class="dv">513</span>)<span class="op">;</span> <span class="co">//531</span>
+<span class="at">nextBigger</span>(<span class="dv">2017</span>)<span class="op">;</span> <span class="co">//2071</span>
+</code></pre></div>

@@ -1,0 +1,479 @@
+''<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chapter 2: Program Structure</title>
+
+    <style>
+    .code {
+      font-family: "Courier New";
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Expressions and Statements</h1>
+    <p>One of the dope aspects of a language-based interface, such as we see in Javascript, is that we can nest code within other code to build ever more complicated programs. This is a similar syntatic mechanism that we see in spoken languages -  words are "nested" in sentences and sentences are "nested" in paragraphs, and with a few paragrpahs of pure Hemmingwaysian fire, you're writing books!</p>
+
+    <p>Expressions: are bits of code that produce values. Remeber how we can simpyl write in our atomic values to create them? Those bits of code are called 'expressions' For example "abc", "cat", 123, true are all examples of expressions that have created values.</p>
+    <p>Statements would be the Javascript equivalent of a full sentence in spoken language, made up of expressions. </p>
+
+    <p>EJS displays the following examples as statements:</p>
+
+    <p>1;</p>
+    <p>true;</p>
+
+    <p>In this case 1 and true could be considered "expressions with semicolons after" them. They are statements because the interpreter interprets them and they exist in our enviornment, if only for a brief time and then are dissapated. </p>
+
+    <h1>Variables</h1>
+
+    <p>How would we hold onto the values of 1 and true above? We don't want to keep writing them over and over again into our program! (DRY) We can use our nifty keyword var, which is used to assotiate values with words that we can use to access these values later.</p>
+
+    <p>It would be kind of silly, but we could save our value 1 to a variable:</p>
+
+    <p> var one = 1; </p>
+    <p>Now whener we want to reference our value 1, we can call our variable one, which at this point has been set to the value 1.</p>
+
+    <p>console.log(one);</p>
+    <p>// 1</p>
+
+    <p>Some more meaningful uses of variables can demonstrate how Javascript deals with variables.</p>
+
+    <p>Let's say I want a program to remmber how old I am</p>
+    <p>var age = 26;</p>
+
+    <p>That age was so last year! EJS has this idea that varibales grasp values, they don't contain them. Let's say last year our age was 27, but this year we are a year older! SHiiiiiiiiet, our age is set to 27. However, Now let's say we want to update our age. WTF do we do? </p>
+
+    <p>Fear not! variables can be assotiated with new values at any time using the assignment operator =. We can just "grasp" the value 27 with our variable age. Age isn't tripping about the update, promise. </p>
+
+    <p>var age = 26;</p>
+    <p>console.log("last year I was" + age);</p>
+    <p> //Last year I was 26</p>
+    <p>age = 27;</p>
+    <p>console.log("this year I'm "+ age);</p>
+    <p>This year I'm 27.</p>
+
+    <p> Let's revistit this idea of variables "grasping" values again. EJS has a dope way of thinking of variables and assignment involving a picture of an octopus in a bathtub. Variables "grasp" values, they don't "contain" them. The octopus is grasping onto several typcial bathroom items, like a toothbrush. But once the octopus has bsuhed it's  It is just as easy to assign a value to a variable as it is to reassign that variable to some other value. Similarly, two variables can both "point to" or be set to the same value. For example if my homie Vicken is also 27, than the following is perfectly plausable: </p>
+
+    <p>var peterAge = 27;</p>
+    <p>var vickenAge = 27;</p>
+    <p>console.log(peterAge);</p>
+    <p>//27</p>
+    <p>console.log(vickenAge);</p>
+    <p>//27</p>
+
+    <p>Also, a program can only access values it has a hold onto. EJS uses the metaphor of "growing a new tentacle" of the domesticated octupus to attach itself to that value. Programmatically, this would look like a new variable declaration to our coveted value.</p>
+
+    <p>var iNeedThis = "very special value";</p>
+
+    <p>console.log("the whole program depends on our very special value! Do we have it saved? If so it should appear here: " + iNeedThis);</p>
+
+    <p>//the whole program depends on our very special value! Do we have it saved? If so it should appear here: very special value</p>
+
+    <h3>undefined and variables</h3>
+    <p>Because Javascript is so loosey-goosey-lasaiz-fair-YOLO-do-whatevs we can declare a variable without assigning it to anything. </p>
+
+    <p>var nada =;</p>
+    <p>console.log(nada);</p>
+    <p>undefined;</p>
+
+    <p>If we try to access our variables nada at this point we will see undefined printed to the console. Note that we don't get null, which means something has no value. The variable nada technically has a value and that value is undefined.</p>
+
+    <h3>Defining hella variables at once</h3>
+    <p>Seeing that one of the tenants of this whole programming business is DRY (Don't Repeat Yourself), we can declare multiple variables on the same line of code.</p>
+
+    <p>OG way of declaring variables, one sad variable at a time:</p>
+
+    <p> var sad = "I'm sad";</p>
+    <p> var why = "This is ridic";</p>
+    <p> var tooMuch = "too much typing";</p>
+
+    <p> var happy = "It's so nice ", together = "to be together", sameLine = "on the same line siiccccck";</p>
+
+    <p>console.log( happy + toegether + " "+ samleLine );</p>
+
+    <p>//"It's so nice to be together on the same line" </p>
+
+
+    <h2>Variable name restrictions</h2>
+    <p>There are hella keywords, such as var, that we can't use as variable names. Additionally, there a good amount of reserved words we shouldn't be using as variable names although some JS enviornments allow them to be used. Rule of thumb- don't use these words. Honestly, virtually all of these words would not be semantic as variable names anyways. I know what  var peterAge probably refers to but var new = 36 could be any number of things!</p>
+
+    <p>The list. Not to memorize, more to rhuminate over: </p>
+<p>break case catch continue debugger (lilBugger is ok tho) default delete do else false finally for function if implements in instanceof (sorry, that one is taken too :() interface let new null package (parcel is ok tho) private protected public return static switch (switchHitter is cool tho) throw true try typeof var void while with yield this </p>
+
+<h2>the Enviornment</h2>
+<p>the enviornment is the collection of variables and thier values at a given time. When programs first start up there is an enviornment with ready variables already. In the browser, variables exist to deal with user input. Many of these are DOM methods that are built in functions that allow users/developers to interact with the content of the page. </p>
+
+<h2>(a very brief intro to) Functions</h2>
+<p>Functions are pieces of a program wrapped in a value. Many enviornments come with ready-made variables that are set to functions. One example of such a function is:</p>
+
+<h3>alert</h3>
+
+<p> Alert creates a pop-up box with information that is presented once the browser is opened. </p>
+
+<p>alert("Welcome to the Jungle, we've got fun and game");</p>
+
+<p>Here we're "applying", "invoking, or "calling" the function alert. All three of these verbs mean using the function. We call the function usually by writing out hte name of the variable that the function is saved to, followed by (); and sometimes putting data inside of the (). The (); after a function call is called the "invocation operator". </p>
+
+<h3>console.log</h3>
+<p>console.log is another built in function in Javascript that writes out its argument to "some console". This is commonly used in browers in the Javascript console, which is accessed on Mac by pressing CMD-OPTION-I or CMD-OPTION C. EJS also gives instructions to search through the browser menus for the "web console" or "developer tools" to find the console.</p>
+
+<p>note that console.log(); is a variable name that has a period in it. This is because it is actually a mthod on an object, which has a special syntax. More on this in the future!</p>
+
+<p>(a very brief intro to) side effects and return values</p>
+
+<p>In the alert function we saw that a text box popus up with the text that we passed inside of the invocation operator when we called the function. This activity is considered a "side effect". EJS includes the examples of "showing a diolog box or wiriting text to the screen" as examples of side effect. The alert function's whole point is the simply write that text to the screen (a side effect), and has its use.<p>
+
+<p>However, functions can also serve a different purpose- they can produce or "return" values. Functions that produce values can be useful without needing a side effect. EJS uses the example of the function Math.max() to demonsrate the use of a function that simple returns a value.</p>
+
+<p>Math.max() takes two values inside of the invocation operator and return the greater value.</p>
+
+<p>console.log(Math.min(6,-6));</p>
+
+<p>//-6;</p>
+
+<p>Here, the program hasn't "changed" much - there isn't a pop-up box. However, this value can be used and saved for later.</p>
+
+<p>Let's say we have two age variables for the homies and we want to figure out which homie is the youngest. </p>
+
+<p>var samAge = 26;</p>
+<p>var vickenAge = 27;</p>
+
+<p>We could use our Math.min() function to produce this value for us!</p>
+
+<p>console.log(Math.min(samAge,vickenAge));</p>
+<p>//26; (however ,note here that Math.min has returned us the number 26, not the variable samAge) </p>
+
+<h2>Prompt and Confirm</h2>
+
+<p>In addition to Alert, the brower enviornment has two other functions thta involve text boxes: Prompt, and Confirm</p>
+
+<p><span style = "font-weight: bold;">confirm</span> is function that presents text to the user and then presents the option for the user to hit buttons for "Cancel" or "OK". In the binary spirit of programming lyfe "Cancel" == false and "OK" == true. </p>
+
+<p><span style = "font-weight:bold">prompt</span> is a function presents a text box inside of a pop-up window to the user. Here, the arguments for the function follow a specific order: prompt("prompt text user sees in the dialogue box", "text that appears in text answer box");</p>
+
+<p>EJS lets us know that prompt and confirm functions aren't used too much in actual programming, though many programmers are vary familiar with them because "these other programmers" inserted a prompt inside of an infinite loop and closed text boxes for 4 hours.</p>
+
+<h2>Control Flow</h2>
+
+<p>When we have multiple lines of code (or statements) in our program, these statement are executed from top to bottom. This is called 'straight control flow'. EJS shows us the following symbol to understand straight control flow:</p>
+
+<img src="http://eloquentjavascript.net/img/controlflow-straight.svg">
+
+<p>EJS also presents us with some statements that show straight control flow in action:</p>
+
+<p>var theNumber = Number(prompt("Pick a number",""));
+alert("your number is the square root of: " + theNumber * theNumber);</p>
+
+<p>Here we've declared a variable theNnumber and saved it to point to the built-in Javascript Number function with a prompt passed into the Number function. The prompt askes the user for a number. The Number function converts the user input from the prompt to type number. Because that is the first code block in the program,  that entire line is executed. Once that line is executed the program moves on to the next line of code. This line of code is an alert function, which we saw is a function that presents a diologue box to the browser using whats passed into the function as the text that is seen on the screen. The alert function uses the the variable theNumber in the text box.</p>
+
+<h2>Conditonal Execution</h2>
+
+<p>Many times when we're programming we don't want the code to execute in order from one line to the next until the end of the program. For example, websites react differently many times based on age or permissions that the user has (For example, var laurent = {friend: true}; than I can see a different version of his profile than var sarah = {friend:false})</p>
+
+<p>But if our code is going to go ahead and execute line by line, than we're going to need to write whole new programs when we want our code to behave differently, right? NOPE! We can use 'conditional execution' to have our program execute different code based on Boolean values. </p>
+
+<p>EJS demonstrates a graphical representation of conditional execution with the following image:</p>
+
+<img src="http://eloquentjavascript.net/img/controlflow-if.svg">
+
+<p>We can initiate conditional execution by using the keyword if followed by () with a conditional expression inside of the (). Let's take a look back at our theNumber code from before. As the current code stands, there is an option for the user to put in a value that cannot be converted to type number even when that value is passed to the function Number. For example if I put "ham sandwitch" into the prompt, Number() will parse "ham sandwitch" to NaN, which means the alert will declare the farily nonsensical: </p>
+
+<p>"your number is the square root of NaN";</p>
+
+<p>So let's see what goes down when we inject a little bit of conditional execution into this lonesome sitch:</p>
+
+<p>var theNumber = Number(prompt("Pick a number",""));</p>
+
+<p>  if(!isNaN(theNumber))
+     alert("your number is the square root of: " + theNumber * theNumber);</p>
+
+<p>OKOK - so here we've introduced conditional execution by using the keyword if followed by an expression within (). Within the () after if, we've used the built-in JS function isNaN(), which is a way to see if a value is of type number. However, that's not all that is inside the conditional expression! We see our old friend, the operator Not !. We remember that Not converts the boolean value of whatever is to its right to the opposite Boolean value. So, in so many words:          if((!NaN(theNumber)) {//code}; // says "if theNumber is a number, execute code in brackets".</p>
+
+<p>Hence, if theNumber is not a number, the  JS interpreter skips the codeline following the if () and no code is run. This means when we input the non-number value of "ham sandwitch", there is no alert that tells us the nonsensical "the square root of your number is NaN"</p>
+
+<p>This iteration of the code is clearly preferable to the initial code, what if we want the code to do something if a non-number value is given as user input? </p>
+
+<p>Here, we can use the keyword else, which provides another option for the code if the initial condition as described by the if() is evaluated to false.</p>
+
+var theNumber = Number(prompt("Pick a number",""));
+if(!isNaN(theNumber))
+     alert("your number is the square root of: " + theNumber * theNumber);
+else if {
+  alert("Hey. Why didn;t you give me a number?");
+}
+  <p>Here, we've used the keyword else and the alert function to acknowledge when theNumber is not of type number.</p>
+
+<p>If we wanted to, we could use the else statement to ask one more time for a number, and if the user still doesn't want to give us a number again we can sadly let them know of thier stubbornness. </p>
+
+<div class = "code">
+<p>var theNumber = Number(prompt("Pick a number",""));</p>
+<p>if(!isNaN(theNumber)) </p>
+     <p>alert("your number is the square root of: " + theNumber * theNumber);</p>
+<p>else {alert("Hey you didn't pick a number");</p>
+     <p>theNumber = Number(prompt("This time, please, pick a number",""));</p>
+     <p>if (!isNaN(theNumber)) {
+     alert("your number is the square root of: " + theNumber * theNumber);
+     }
+   </p>
+     <p>else {alert("Aright, aright clearly you don't want to give me a number. Fine!")};
+};</p>
+
+</div>
+
+<h3>else if</h3>
+
+<p>We can 'chain together' multiple else/if staments to present various paths for our program to choose from based on the conditional expression following the if keyword:</p>
+
+<p>var num = Number(prompt("Pick a number from 0 to 10", "0,1,2"));
+if(num < 10)
+    alert("small number dude!");
+  else if (num < 100)
+    alert("medium");
+  else
+    alert("big");
+</p>
+
+<p>Above we see a program that first seeks user input via the prompt function, and our type coersive Number function that changes the users input into type number. After this line of code is executed, we now have a variable  num saved to a number. Up until now, there isn't any conditional execution or control flow- and we move right ahead to the next line of code.</p>
+
+<p>In this next line of code, we see the keyword if followed by a conditional expression in () - classic conditional execution! The program now cycles through two options and dispatches on a third if the first two aren't met. Each option checks to see if the num variable is greater than or smallar than the values presented in each branch, starting with the if branch, than moving to the if else branch (only if the if branch's condition is not meant), and finally moving to the else branch (if the is else branch's condition is not met). </p>
+
+<p>EJS provides the following graphic for the above situation (or nay similar type situatio where there are three possible branches to choose from): </p>
+
+<img src="http://eloquentjavascript.net/img/controlflow-nested-if.svg">
+
+<h2>while and do loops</h2>
+
+<p>We've so far looked at if/else statements which represent one way to intriduce control flow into a program. However, a common form of control flow in programming include looping. Here instead of choosing different branches, we can tell the program to return to a specific part of the program as many times as we like, and we can use conditional execution to set up a way for the program to break out of loops and return to normal execution and move to the line of code following the loop.</p>
+
+<p>Again resisting the urge to put a picture of the octopus up, EJS places the following image demonstrating cyclical nature of looping:</p>
+
+<img src = "http://eloquentjavascript.net/img/controlflow-loop.svg">
+<p>Loops are a great way to adhere to the programmign axion of DRY!</p>
+
+<p>Comparing a program that has hella lines of code vs. looping to achieve the same behavoir wil ldmeonstrate how looping is hella dope to help practice the tenant of DRY:</p>
+
+<p>Firstly, let's check out an example of a program that writes out all the odd numbers 1-13 to the console.</p>
+<div class = "code">
+  <p>console.log(1);</p>
+  <p>console.log(3);</p>
+  <p>console.log(5);</p>
+  <p>console.log(7);</p>
+  <p>console.log(9);</p>
+  <p>console.log(11);</p>
+  <p>console.log(13);</p>
+</div>
+
+<p>This program is the in the top 5 awards for least DRY programs. This shit is less DRY than a Seattle winter.</p>
+
+<p>Let's go ahead and refactor this "program" to use loops. It seems like we want to repeat the same action a bunch of times (AKA prime situation for a loop)!</p>
+
+
+  <p>var num = 1;</p>
+  <p>while (num <  13) { </p>
+  <p>  num +=2; </p>
+  <p> console.log(num); </p>
+<p>  }  </p>
+
+<p>Note that if the increment is placed before the console.log than the loop only increments var num to 13 and stops printing at 13.</p>
+
+  <p>// 1 </p>
+  <p>// 3 </p>
+  <p>// 5 </p>
+  <p>// 7 </p>
+  <p>// 9 </p>
+  <p>// 11 </p>
+  <p>// 13 </p>
+  <p> -> 15 </p>
+
+
+<p>
+var num = 1;
+while (num <= 13) {
+  console.log(num);
+  num += 2;
+}
+</p>
+
+<p>
+//above prints up to 13 and then returns 15. This happens because the increment happens after the console.log. The code can enter into the loop at num = 13, prints and then increments to 15. At the point that num is equal to 15, the code can't enter back into the loop because (15 <= 13) is false.
+</p>
+
+var num2 = 1;
+while (num2 <=13) {
+  num2 += 2;
+ console.log(num2);
+}
+</p>
+
+<p>//above prints up to 15 and then returns undefined. This isd because on the last iteration the num2 = 13. (13 <= 13) is true and the code enters into the code block. The code block first increments num2 to 15 and then prints. We're legally printing 15 here. Then the code tries to iterate one more time but the expression (15 <= 13) is false. </p>
+
+<p>Let's talk through whats happening in the loop. When a statement starts with the while keyword, we have begun a loop. While is followed by an expression in parenthesis anmd then a code block. (Similar syntax to if with the conditional expression in () and a code block following.) </p>
+
+<p>The code inside of the loop gets executed as long as the expression within the () after the while keyword is true. We need a way for the condition to be evaluated to false however, or else the code block inside of the {} will keep executing.</p>
+
+<p>A note about braces, {}. EJS says we can abstain from writing out {} for "single-statement bodies". </p>
+
+<p>Note in the while loops above we used a number variable defined outside of the scope of the loop and than incremented this value. The value of our number variable is how we made sure to stop at the right place in the loop.</p>
+
+<p>Let's use a loop to calculate 2^10</p>
+
+var counter = 0;
+var result = 1; (like o for increment 1 is ok here b/c we're multiplying.)
+while (counter < 10) {
+  result *= 2;
+  counter +=1;
+}
+console.log(result); //1024
+
+<p>NOTE! Again we are starting at 0 at the counter and setting the final to condition to be counter < 10. This means that we're incrementing 10 times, but no 11. Thus, counter can't be (counter <= 10) in this case. </p>
+
+
+<p>Just as another example! Let's find the power of 3^6</p>
+
+var counter = 0;
+var result = 1;
+
+while (counter < 6){
+  counter += 1;
+  result *= 3;
+  console.log (result);
+}
+//729
+
+<p>Above for multiplication, we have to set our intiial value equal to 1. Even if we want to compute 3^6. The first iteration will increment result to be 1*3 or 3^1. Next iteration will than increase result to be 1*3*3 or 3^2, which is 9, etc until we increase result to be 3^n where n is (counter < n). </p>
+
+<h2>do loops!</h2>
+
+<p>do loops are these nasty little buggers that are similar to while loops, but whose condition comes after the code block. What this means is that do loops execute thier code block at least once. </p>
+
+ do {
+var name = prompt("what's your name?");
+} while (!name);
+console.log(name);
+
+<p>Above we see a do loop in action. The body of the do loop is the prompt function that will ask the user for thier name and than save thier answer to a variable. If the answer given by the user is false than the code block will run again until (!name) is false, which means name must be true.</p>
+
+<p>Remember that all strings execpt for "" are of Boolean type true, so the prompt will continue to run until a string is placed into the answer.</p>
+
+<h2>Indenting code</h2>
+
+<p>Please indent code! We can write out a long ass one line program. Google minimized code. Marijn likes to indent two spaces for each new line of code I feel his style tho.</p>
+
+<h2>for Loops</h2>
+<p>'The' for loop has arrived people. It's time to get really real with this iteration. We've noticed in our while loops that we've set a counter variable in order to track progress on the loop and see how many times we should iterate. Because this construct is so common, JS has built a counter variable mechanism into the conditional expression of the for loop! </p>
+
+<p>for (var number = 0; number <=12 number += 2) </p>
+<p>console.log(number); </p>
+
+<p>Note! Above I first messed up by placing a semi colon after the conditional expression, which was a big no no! This means I just iterated through the loop and overwrote the variable until the number variable was set to 14, than prointed out that number to the console. If we want to keep the body of the for loop as one unit, connected to the conditional than we can't put semi-colons after the conditional!</p>
+
+<p>For loops place variables that relate to the 'state' of the loop in the (). The 'state' of our previous while loops had been partially outsourced to the counter variable, declared outside the loop.</p>
+
+<p>The 3 expressions inside the (var number = 0; number <= 12; number +=2) do the following:</p>
+
+<ul>
+<li>1st expression (var number = 0 in this case), initialize the loop. This is done usually by defining the variable, as we've done here.</li>
+<li>The 2nd expression (number <= 12 in this case), checks  if the loop continues. As long as the variable number is less than or equal to 12 the loop will run afain.</li>
+<li>The 3rd expression updates the state of the loop, in this case by adding 2 to the number variable. Note that because we're increasing the variable number, eventually number will be equal to or less than 12, which means our loop will end at some point. The expression that updates the state of the loop and the expression that checks the state of the loop work together to avoid a browser crashing mparty-foul inducing, Drake pre-Back 2 Back, infinite loop.  </li>
+</ul>
+
+<p>Let's use a for loop to evaluate 2^10</p>
+
+<p>var result = 1; </p>
+<p>for (var counter = 0; counter < 10; counter ++) </p>
+<p> result *= 2; </p>
+
+<p>console.log(result);</p>
+<p>//1024</p>
+
+<p>Note here all we've done is increase our result variable until it is = 1024. Let's use the same mechanism to find 3^6</p>
+
+var result = 1;
+for (var i = 0; i < 6; i++)
+  result *= 3;
+
+console.log(result)
+//729
+
+<h3>Breaking out of a loop</h3>
+<p>Marijn let's us know that there are non-logic based ways to break out of a loop. Logic was used above to set up a mathmatical way to make the conditional (number <= 12) // false using the update expression. </p>
+
+<p>However, we can use another JS keywaord called 'break' to jump out of loops. Let's look at the following example:</p>
+
+for (var current = 21; ; current++) {
+  console.log(current)
+  if (current % 8 === 0)
+  break;
+}
+console.log(current);
+//24
+
+<p>Here, the loop doesn't have that second expression within the conditional () after the for keyword. So what's going here? The loop starts at current = 21. The code than logs current to the console and then it encounters an if statement. The condition set within the conditional after the if states that if the remainder of dividing the current by 8 is 0, proceed to the body of the if statement. However at 21, this isn't true, so at this point the code has run the extent of the code block. The code then updates its state and current is 22. The same thing happens because 22 % 8 === 0 is false. Then when current = 24, (24 % 8 === 0) is true! We move to the body of the if statement, which is a break keyword. The break keyword says break out of the loop and return to the normal flow of execution!</p>
+
+<p>continue is another JS keyword that influences behavoir inside of a loop. However, instead of breaking out of the loop and back to the normal flow of hte program continue jumps out of the loop body and continues on the loop's next iteration.</p>
+
+<h2>Updating variables succintly</h2>
+<p>I've used a certain type of notation to update variables throughout the notes for this chapter. Instead of writing out counter = counter * 2; we can write the following: </p>
+
+<p>counter *= 2;</p>
+
+<p>Simply put the operator before the equals sign and we never have to write the variable name a second time again if we wish to update that variable!</p>
+
+<code class="prettyprint">
+ <p>var result = 5;</p>
+ <p> result -= 4;</p>
+ <p>result;</p>
+ <p>//1</p>
+</code>
+
+
+<h2>Dispatching on a value with switch</h2>
+
+<p>So far we;ve looked at two forms of conditional execution: if/else branching and looping. Looping is great when we want a program to repated a step a bunch of times, but what about when we want to choose between helllla different options. We could keep writing out if else if else if else if until the cows come home ,but those bovins tryna stay posted on the grass. </p>
+
+<p>To the rescue is one of the ugliest Javascript constructions, the switch statement! Here we see our favorite break statement make another appearance and a rare appearence of the colon :.</p>
+
+<code class="prettyprint">
+<p>syntax:</p>
+
+switch(prompt("what is your favorite color?")) {
+  case "blue":
+    console.log("Blue is dope!");
+    break;
+  case "green":
+    console.log("you must like to smoke that greeen");
+  case "yellow":
+     console.log("mellow yellow, bro!");
+     break;
+  default:
+     console.log("Don't have anythin to say about that color!");
+    break;
+}
+
+</code>
+
+<p>Here, the code will jump  to the corresponding case statement and execute code until a break statement is reached. If these is no case statement, than the code jumps to default.</p>
+<p>For example, the user inputs green above, then we will see both "you must like...." and "mellow..." printed to the console because there is no break until after "mellow..." from case 'yellow'.</p>
+
+<h2>Capitalization. TL;DR mose programmers use camelcase for variables. var camelCase = "capitalize all words except the first"</h2>
+
+<h2>Comments</h2>
+<p>Place comments in JS using two forward slashes: //. Comments can be a good way to to write in info that you need to solve a problem. For example in the following problem we aren't sure where we need the check expression to stop in the () of the for loop so we can write in a comment to look at this part of the code when we know more:</p>
+
+<p> for (var i = 0; //need to stop checking somewhere here; i++){ </p>
+
+<p>}</p>
+
+
+<h2>Summary</h2>
+<p>Programs are built out of statements, which are built of expressions.</p>
+<p>Putting statements on top of each other will create a program that is executed from top to bottom. However, we can use two forms of conditional execution to control the flow of the program. One involves solving a dispatch with different branch options for our program to follow: if/else and switch. The other is when we want the code to keep returning to a previous place in our program ,looping (while, do, for). </p>
+
+<p>We save data to names by using variables. Our program has access to all the variables that have been decalres in the current enviornment. </p>
+
+<p>Programs are sets of instructions wrapped into pieces of code that are usually saved to a variable.</p>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"> </script>
+
+  </body>
+</html>

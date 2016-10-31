@@ -1,0 +1,20 @@
+<p>In JavaScript there are certain data types that are treated differently. For example, variables that point to primitive data types that make references to each other will not affect each other's values.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> pete <span class="op">=</span> <span class="st">&#39;pete&#39;</span><span class="op">;</span>
+<span class="kw">var</span> name <span class="op">=</span> pete<span class="op">;</span>
+pete <span class="op">=</span> <span class="st">&#39;happy&#39;</span><span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(pete<span class="op">,</span> name)<span class="op">;</span> 
+<span class="co">// &#39;happy&#39; &#39;pete&#39;</span></code></pre></div>
+<p>Above we've seen that <code>name</code> makes a reference the value of <code>pete</code> upon definition. In a subsequent line <code>pete</code> is reassigned to the string <code>'happy'</code>. The value of <code>name</code> is unchanged. This is because <code>name</code> was assigned to the value pointed to by <code>pete</code> when <code>name</code> was first declared. <code>name</code> doesn't care what happens with <code>pete</code> after <code>name</code> has been declared.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> myObj <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span><span class="st">&#39;myObj&#39;</span><span class="op">};</span>
+<span class="kw">var</span> yourObj <span class="op">=</span> myObj<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(myObj)<span class="op">;</span>
+<span class="co">// {name;&#39;myObj&#39;}</span>
+
+<span class="va">yourObj</span>.<span class="at">age</span> <span class="op">=</span> <span class="dv">28</span><span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(myObj)<span class="op">;</span>
+<span class="co">// {name:&#39;myObj&#39;, age:28}</span></code></pre></div>
+<p>Above, we can see that both <code>myObj</code> and <code>yourObj</code> make reference to the same object and can both thus affect the object that both variable names point to.</p>
+<p>This rule can describe why sometimes we see variables that point to objects, arrays, or functions being changed unexpectedly in our program. Alternatively, variables that point to primitives will only be affected by assignment to their own name.</p>

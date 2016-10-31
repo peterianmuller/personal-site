@@ -1,0 +1,154 @@
+<p>Chapter 4 introduces the idea of correlation and how we can use objects and arrays to store data relating to computing correlation. Correlation is &quot;the measure of dependence between variables&quot;. We can use the <a href="http://www.pmean.com/definitions/phi.htm">phi coefficient</a> to find the relationship between binary variables.</p>
+<p>Correlation fits in well with the problem that we are trying to solve throughout the chapter. The issue is that we have a homie Jacques, who keeps turning into a squirrel. Luckily, he has decided to keep a journal of his daily activities and if he turned into a squirrel that day.</p>
+<p>Haverbeke describes how the journal entries are best kept in an array and how each individual entry is suited for the type object(63). This is because objects are built of key value pairs that we can add and remove as we please. We cold decide to store the individual entries in arrays, which might look like:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+<span class="kw">var</span> entry <span class="op">=</span> [[<span class="st">&quot;touched tree&quot;</span><span class="op">,</span> <span class="st">&quot;ate peanuts&quot;</span><span class="op">,</span> <span class="st">&quot;brushed teeth&quot;</span>]<span class="op">,</span> <span class="kw">true</span>]<span class="op">;</span></code></pre></div>
+<p>We would assume that <code>entry[0]</code> refers to the events of that day and <code>entry[1]</code> refers to squirrelification.</p>
+<p>However, when comparing this setup to an object setup it becomes clear why the syntax of a plain object would be preferable for this type of data:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> entry <span class="op">=</span> <span class="op">{</span>
+    <span class="dt">events</span><span class="op">:</span> [<span class="st">&quot;touched tree&quot;</span><span class="op">,</span> <span class="st">&quot;ate peanuts&quot;</span><span class="op">,</span> <span class="st">&quot;brushed teeth&quot;</span>]<span class="op">,</span> 
+    <span class="dt">squirrel</span><span class="op">:</span> <span class="kw">true</span><span class="op">;</span>
+<span class="op">}</span>    
+
+<span class="co">//improved semantics of access:</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">entry</span>.<span class="at">events</span>)<span class="op">;</span> <span class="co">// [&quot;touched tree&quot;, &quot;ate peanuts&quot;, &quot;brushed teeth&quot;]</span></code></pre></div>
+<p>Now we can access the events property of the entry by name instead of by index number.</p>
+<p>Haverbeke has a dope example of abstracting the process into a function</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> journal <span class="op">=</span> []<span class="op">;</span> <span class="co">//array</span>
+
+<span class="kw">var</span> addEntry <span class="op">=</span> (events<span class="op">,</span> didITurnIntoASquirrel) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="va">journal</span>.<span class="at">push</span>(<span class="op">{</span>
+      <span class="dt">events</span><span class="op">:</span> events<span class="op">,</span>
+      <span class="dt">squirrel</span><span class="op">:</span> idIturnIntoASquirrel 
+    <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="at">addEntry</span>([<span class="st">&quot;touched tree&quot;</span><span class="op">,</span> <span class="st">&quot;brushed teeth&quot;</span><span class="op">,</span> <span class="st">&quot;funky chicken&quot;</span>]<span class="op">,</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// didITurnIntoASquirrel will point to a Boolean. This will become the value for the key &quot;squirrel&quot; in the entry.</span></code></pre></div>
+<p>Correlation aside!</p>
+<p>So now we've got a journal populated with events and a binary variable of squirrelification. AT first glance it seems like we've only got 1 binary variable: squirrel or no squirrel. However, we can think of an event occurring or not as a binary variable as well. If we consider that we can apply the phi coefficient to each event in our journal.</p>
+<p>Here is a psudocoded version of the formula for phi. This obviously isn't the correct syntax for any type of language, but the idea is mostly there:</p>
+<p>phi = n11n00 - n10n01 / sqrt((n10 + n11) * (n01 + n00) * (n00 + n01) * (n10 + n11))</p>
+<p>The central idea behind the phi formula is that we need a table of 4 conditions. Let's utilize the example of pizza being our event and squirrelifcation being our condition. The table we need is :</p>
+<div class="figure">
+<img src="http://eloquentjavascript.net/img/pizza-squirrel.svg" alt="Alt text" width ="400px" />
+</div>
+<p> Numberof times each condition occurred:</p>
+<p>no pizza, no squirrel (n00) : 76 no pizza, squirrel (n01): 4 pizza, no squirrel (n10): 9 pizza, squirrel (n11) : 1</p>
+<p>The formula for the phi coefficient is:</p>
+<div class="figure">
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/215a1b9c47f5f7114ffb877b7f79f540a38044dc" alt="Alt Text" />
+<p class="caption">Alt Text</p>
+</div>
+<p>Haverbeke describes how we can plug the numbers from our pizza squirrel data into the formula (68):</p>
+<p>(1 * 76 - 9 * 4 ) / Sqrt(10<em>80</em>5*85)</p>
+<p>Phi is around 0.069, which isn't close to 1 or -1 so there is no correlation between eating pizza and becoming a squirrel.</p>
+<p>We've seen how to use the phi formula with a 2 by 2 table, so how would we represent a 2 by 2 table in JavaScript? Haverbeke suggests that we can use a single array. The indices of the array correspond to each place in the table. Our original table was a two-bit binary number with the pizza variable representing the left-most digit. However, in the text Haveberke has us making the left-most digit, such that:</p>
+<p>n00 no squirrel no pizza (decimal: 0) n01 no squirrel pizza (decimal: 1) n10 squirrel no pizza (decimal: 2) n11 squirrel pizza (decimal: 3)</p>
+<p>Note that the values in decimal conveniently are the index values for an array with 4 elements: [0,1,2,3]. Thus our table will be:</p>
+<p>[n00, n01, n10, n11], which for our pizza example is: [76, 9, 4, 1].</p>
+<p>Now that we have a data structure that JavaScript likes (an array representing a 2 by 2 table), let's write out the phi formula in JavaScript:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+phi <span class="op">=</span> table <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">return</span> ((table[<span class="dv">3</span>] <span class="op">*</span> table[<span class="dv">0</span>] <span class="op">-</span> table[<span class="dv">2</span>] <span class="op">*</span> table[<span class="dv">1</span>]) / <span class="va">Math</span>.<span class="at">sqrt</span>( (table[<span class="dv">2</span>] <span class="op">+</span> table[<span class="dv">3</span>]) <span class="op">*</span>
+     (table[<span class="dv">0</span>] <span class="op">+</span> table[<span class="dv">1</span>]) <span class="op">*</span>
+     (table[<span class="dv">1</span>]<span class="op">+</span>  table[<span class="dv">3</span>]) <span class="op">*</span>
+     (table[<span class="dv">0</span>] <span class="op">+</span> table[<span class="dv">2</span>]) ))
+<span class="op">}</span></code></pre></div>
+<p>Cool, so now we can compute phi based on a table. However, we need a way to create these tables from our data set. In order to do this we must:</p>
+<p>&quot;loop over all the entries and tally up how many times the event occurs in relation to squirrel transformations&quot; (69).</p>
+<p>```javascript // checking if an entry in the journal has an event hasEvent = (event, entry) =&gt; { return entry.events.indexOf(event) !== -1; }</p>
+<p>//creating two-two arrays for a given event from the journal data</p>
+<p>tableFor = (event, journal) =&gt; {</p>
+<p>//create a table. All 0's because at the beginning there has been no event and no squirrlification var table = [0,0,0,0]; for (var i = 0; i &lt; journal.length; i++) { var index = 0, entry = journal[i];</p>
+<pre><code> // if the event is present than we need to move the index from the initial index
+ if (hasEvent(event, entry)) index += 1;
+
+ //if squirrel is present move index 2
+ if (entry.squirrel) index +=2;
+
+ table[index]++;</code></pre>
+<p>} return table; }</p>
+<p>console.log(tableFor(&quot;bushed teeth&quot;, JOURNAL)); //[ 85, 0, 5, 0 ]</p>
+<p>console.log(tableFor(&quot;pizza&quot;, JOURNAL)); // [ 76, 9, 4, 1 ]</p>
+<p>```</p>
+<p>Now we have a few pieces of the puzzle - <code>phi</code> and <code>tableFor</code> can work together to provide us with phi coefficients for each event and that events singular impact on squirrelification.</p>
+<p>We could potentially be done here, we would just calculate each phi for each event. We could store them in a map - which is a way of using objects &quot;to go from values in one domain (in this case, event names) to corresponding values in another domain ( in this case phi coefficients)&quot; (70).</p>
+<p>One way to create such a map would be:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+<span class="kw">var</span> map <span class="op">=</span> <span class="op">{}</span>
+
+storePhi <span class="op">=</span> (event<span class="op">,</span>phi) <span class="op">=&gt;</span> <span class="op">{</span>
+  map[event] <span class="op">=</span> phi<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> pizzaPhi <span class="op">=</span> <span class="at">phi</span>(<span class="at">tableFor</span>(<span class="st">&quot;pizza&quot;</span><span class="op">,</span> JOURNAL))<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(pizzaPhi)<span class="op">;</span> <span class="co">// 0.069</span>
+
+<span class="at">storePhi</span>(<span class="st">&#39;pizza&#39;</span><span class="op">,</span> pizzaPhi)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(map)<span class="op">;</span> <span class="co">// {pizza: 0.69}</span></code></pre></div>
+<p>Cool, so the next function is awesome. In <code>gatherCorrelations</code> we use our various helper functions to create a map of phi coefficients for our JOURNAL.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+gatherCorrelations <span class="op">=</span> journal <span class="op">=&gt;</span> <span class="op">{</span>
+
+  <span class="co">//map we&#39;ll be populating</span>
+  <span class="kw">var</span> phis <span class="op">=</span> <span class="op">{}</span>
+  
+  <span class="co">//iterate over each entry in journal</span>
+  <span class="cf">for</span> (<span class="kw">var</span> entry <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> entry <span class="op">&lt;</span> <span class="va">journal</span>.<span class="at">length</span><span class="op">;</span> entry<span class="op">++</span>) <span class="op">{</span>
+
+    <span class="co">// create a variable events to have the events array of the current entry stored in a variables</span>
+    <span class="kw">var</span> events <span class="op">=</span> journal[entry].<span class="at">events</span><span class="op">;</span>
+
+    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">events</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+      <span class="kw">var</span> event <span class="op">=</span> events[i]<span class="op">;</span>
+      <span class="cf">if</span> (<span class="op">!</span>(event <span class="kw">in</span> phi)) <span class="op">{</span>
+        phis[event] <span class="op">=</span> <span class="at">phi</span>(<span class="at">tableFor</span>(event<span class="op">,</span> journal))<span class="op">;</span>
+      <span class="op">}</span>
+    <span class="op">}</span>
+  <span class="op">}</span>
+  <span class="cf">return</span> phis<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">var</span> correlations <span class="op">=</span> <span class="at">gatherCorrelations</span>(JOURNAL)<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">correlations</span>.<span class="at">pizza</span>)<span class="op">;</span> <span class="co">// 0.69</span>
+</code></pre></div>
+<p>Sicc!</p>
+<p>So Now we have a map of correlation between events and squirrelification for our JOURNAL!</p>
+<p>Haverbeke goes through some more dope work that we can do on our <code>correlations</code> map. We talked about how phi coefficients that are close to 1 or -1 mean there is a relationship between the two variables. Let's check out the correlations that are greater than 0.1 or less than -0.1:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">var</span> event <span class="kw">in</span> correlations) <span class="op">{</span>
+  <span class="cf">if</span> (correlations[event] <span class="op">&gt;</span> <span class="fl">0.1</span> <span class="op">||</span> correlations[event] <span class="op">&lt;</span> <span class="op">-</span><span class="fl">0.1</span>) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(event <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> correlations[event])<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//weekend: 0.13719886811400708</span>
+<span class="co">//brushed teeth: -0.3805211953235953</span>
+<span class="co">//candy: 0.12964074471043288</span>
+<span class="co">//work: -0.13719886811400708</span>
+<span class="co">//spaghetti: 0.242535625036333</span>
+<span class="co">//reading: 0.11068280537595927</span>
+<span class="co">//peanuts: 0.59026798116852</span></code></pre></div>
+<p>Haverbeke notes that &quot;brushed teeth&quot; event has a phi closest to -1 and &quot;peanuts&quot; is closest to 1. He then creates a really dope program to check if there is a correlation when Jacques eats peanuts but does not brush his teeth:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">JOURNAL</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+  <span class="cf">if</span> (<span class="at">hasEvent</span>(<span class="st">&quot;peanuts&quot;</span><span class="op">,</span> JOURNAL[i]) <span class="op">&amp;&amp;</span>
+    <span class="op">!</span><span class="at">hasEvent</span>(<span class="st">&quot;brushed teeth&quot;</span><span class="op">,</span> JOURNAL[i])) <span class="op">{</span>
+
+    <span class="co">//adding a &quot;new&quot; event of eating peanuts and not brushing teeth:</span>
+    JOURNAL[i].<span class="va">events</span>.<span class="at">push</span>(<span class="st">&#39;peanut teeth&#39;</span>)<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">phi</span>(<span class="at">tableFor</span>(<span class="st">&#39;peanut teeth&#39;</span><span class="op">,</span> JOURNAL)))<span class="op">;</span>
+
+<span class="co">//1</span></code></pre></div>
+<p>So if we know that Jacques eats peanuts and refuses to brush his teeth than he will be a squirrel that night. Sad!</p>
+<p>This example has been a dope deconstruction of a problem. We asked what made Jacques go through his strange lycanthropy and provdied with the data of journal entries, we were able to program a way of finding out the answer to this question.</p>
+<p>Objects and arrays were important for this algorithm. The conveniences of iterating over arrays facilitated looping over the journal entries while the arbitrary key-value pairs of objects allowed a semantic-friendly data structure for each individual entry.</p>
+
+<!--  
+TODO: Extrapoliate correltation to other situations: comparing an event/condition with the existance of another variable. For example: Bumgarner pitched (Y/N) Giants win (Y/N)</p>
+<p>var data = [no win no bum, no win bum, win no bum, win bum]</p>
+
+-->

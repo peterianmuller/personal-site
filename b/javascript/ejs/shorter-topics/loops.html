@@ -1,0 +1,35 @@
+<p>Chapter two describes program structure and how the interpreter reads a program. The interpreter will evaluate a program top to bottom and there are various ways to make sure that only code that is desired is evaluated. A real world example of this could be that our Facebook newsfeed is only populated by posts of pages that a user follows/is friends with. Even though posts exist that are from pages not linked to a user, a Facebook profile page needs to instruct the browser to skip those non-linked posts when constructing a newsfeed.</p>
+<p>Let's check out some of the examples of looping control flow that Haverbeke touches on, using a program to calculate 3^8 without using <code>Math.Pow()</code></p>
+<p><code>while</code></p>
+<pre><code>var counter = 0, result = 1;
+while (counter &gt; 8) {
+  result *= 3;
+  counter++;
+} 
+console.log(result); //6561
+console.log(result === (Math.pow(3,8))); // true</code></pre>
+<p>The <code>while</code> loop consists of the <code>while</code> keyword followed by a conditional expression found placed within <code>()</code>. If the condition holds, than the succeeding blocks will be evaluated. Otherwise the lines of code that comes after the block will be evaluated. In order to calculate 3 ^ 8, we declare <code>result</code> value, set to 1, and then multiply it by 3 for as many times as the exponent requires (8 times in this case). <code>counter</code> variable starts at 0 and will be incremented by one for each iteration until <code>counter === 8</code>, in which case the conditional will not hold and we have a completed result variable.</p>
+<p><code>do</code></p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> result <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+<span class="cf">do</span> <span class="op">{</span>
+    result <span class="op">*=</span> <span class="dv">3</span><span class="op">;</span>    
+<span class="op">}</span> <span class="cf">while</span> (result <span class="op">!==</span> <span class="va">Math</span>.<span class="at">pow</span>(<span class="dv">3</span><span class="op">,</span><span class="dv">8</span>))<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(result)<span class="op">;</span> <span class="co">// 6561</span></code></pre></div>
+<p><code>do</code> is similar to <code>while</code>, and even includes the <code>while</code> keyword in its syntax. A crucial difference is that the <code>do</code> loop will execute once BEFORE evaluating the conditional expression following <code>while</code>. This means that result will be reassigned to 3 before checking any conditionals.</p>
+<p>The example in the text makes more sense for a <code>do</code> loop.</p>
+<pre><code>do {
+    var name = prompt(&quot;What&#39;s your name?&quot;);
+} while (!name);
+console.log(name);</code></pre>
+<p>The programcito here prompts the user to provide a name and will only ask again if an empty string is provided as name. Here the program only loops if it needs to.</p>
+<p><code>for</code></p>
+<p>Haverbeke describes the rise of the <code>for</code> on page 33: &quot;Many loops follow the pattern (seen before). First, a &quot;counter&quot; variable is created to track the progress of the loop. Then comes a <code>while</code> loop, whose test expression usually checks whether the counter has reached some boundary yet. At the end of the loop body, the counter is updated to track progress.&quot;</p>
+<p>&quot;(The following program using <code>for</code> is exactly equivalent to the earlier (examples). The only change is that all the statements that are related to the 'state' of the loop are now grouped together&quot;.</p>
+<p>This means that the counter variable has been moved to be an essential part of the <code>for</code> syntax and doesn't require an external variable. This is a cool example of the trend in programming to abstract away details when a process is very similar and could be done in a more efficient way.</p>
+<pre><code>var result = 1;
+for (var i = 0; i &lt; 8; i++) {
+  result *= 3;  
+}
+console.log(result);
+console.log(result === (Math.pow(3,8)));</code></pre>
+<p>We've seen three different looping control flow mechanisms to utilize the power of a computer to repeat code with updated state: <code>while</code>,<code>do</code>, and <code>for</code>.</p>

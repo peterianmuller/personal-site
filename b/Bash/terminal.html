@@ -1,0 +1,66 @@
+<p>Git commands: ls - list (lists the contents of a directory) cd - change directory (moves from one directory to another) -a - all ls -a list all (including hidden folders) cd ./Documents - how to move forward from root to the documents folder. cd .. - go back to previous directory. Use cd .. to return to the directory &quot;above&quot; the current one. Filesystem is aligned vertically, with the root directory as the lowest file. cp - copy file or directory</p>
+<p>root - lowest level in filesystem / is root in command line language &quot;The root directory contains all the files the operating system needs to operate.&quot;</p>
+<h2 id="moving-around">Moving Around</h2>
+<p>&quot;Absolute path&quot; is a filepath to locate a file that is the same no matter where you are in the terminal. The way to describe an absolute path is to start at the root directory. For example, to enter the Documents directory via absoluta path, we can type in:</p>
+
+<pre style="margin: 0; line-height: 125%"><span style="color: #00aaaa">cd</span> /Users/petermuller/Documents
+</pre>
+
+
+
+<p>We would use a diferent notation if we were already in the Desktop directory and wanted to move forward. &quot;Moving forward&quot; means we need to use ./ in our bash script. Let's make sure we're at the root directory by using an absolute path to get there:</p>
+
+<!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #00aaaa">cd</span> /Users/petermuller
+</pre>
+
+
+
+<p>Now to move forward from the root directory we need to use our homie ./</p>
+
+<!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%"><span style="color: #00aaaa">cd</span> ./Desktop
+</pre>
+
+
+<p>Now we're in the Desktop directory!</p>
+<p>If we want to see the filepath for a nested folder we can drag said folder to the terminal window and that will show us what's poppin'.</p>
+
+<!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%">Peters-MacBook-Pro:Downloads petermuller<span style="color: #aa0000">$ </span>/Users/petermuller/Desktop/Personal/Original\ Music/DJ\ Library/Hip\ Hop/Soulquarians/D<span style="color: #aa0000">&#39;</span>angelo
+</pre>
+
+
+<h2 id="copying">Copying</h2>
+<p>Copying uses the cp command. The way to use cp to copy a file into the current directory is:</p>
+
+<!-- HTML generated using hilite.me --><pre style="margin: 0; line-height: 125%">cp TestFile.js TestFile-Copy.txt
+</pre>
+
+
+<p>AKA</p>
+<p>cp originalfilename.extenseion copyfilename.extension</p>
+<p>If we want to copy a file and have that copy appear in a different directory we can do:</p>
+<p>cp originalfilename.extension /Some/Folder/</p>
+<p>Let's make a copy of our copy that we created in the Downloads directory</p>
+<p>cp TestFile-Copy.js /Users/petermuller/Downloads</p>
+<h2 id="moving">Moving</h2>
+<p>mv can be used to 1) move a file from one directory to another and 2) rename a file</p>
+<ol style="list-style-type: decimal">
+<li>Using mv to move a file to a new directory</li>
+</ol>
+<p>First let's get ourselves into our test directory:</p>
+<p>cd /Users/petermuller/Desktop/test</p>
+<p>Now let's use mv to move our test file to another directory mv Testfile.js /Users/petermuller/Music</p>
+<p>Now Testfile.js has been moved from the test directory and the file resides in the Music directory, whose absolute path is: /Users/petermuller/Music</p>
+<p>The algorithm for moving a file using the mv looks like</p>
+<p>mv filename.extension /Some/Folder</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using mv to rename a file.</li>
+</ol>
+<p>Enter directory where target file is. In our case, I placed TestFile-Copy.js back in the test directory below the Dektop directory.</p>
+<p>cd /Users/petermuller/Desktop/test</p>
+<p>mv TestFile-Copy.js TestRenamed.js</p>
+<p>ls // TestRenamed.js</p>
+<p>mv rename algorithm</p>
+<p>mv OriginalFilename.extension NewFileName.extension</p>
+<h2 id="deleting-directories">Deleting directories</h2>
+<p>rm - remove command</p>
+<p>If you type &quot;rm -rf filename.extnsion&quot; this means to delete filename.extension 'forcefull' or 'recursively', which means there will be no stopping the action. Alternatively, if you write &quot;rm -i&quot; than this will ask if you're sure you want to delete. I will make the rm function &quot;interactively&quot; delete the file.</p>

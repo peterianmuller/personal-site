@@ -1,0 +1,11 @@
+<p>A nice codewars challenge entitled Are You Playing Banjo? by <a href="https://www.codewars.com/users/MRodalgaard">MRodalgaard</a> has us in need of a function that checks if an input names plays banjo or not. People who play banjo have names that start with <code>&quot;R&quot; or</code>'r'`. Just off the jump, the language of the spec describes the need to perform one of two actions, the ability to strum sweet chords on the 'jo or not. A cool construct to handle binary choices in the homie ternary operator, so called because it involves three values.</p>
+<p>The task at hand:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">areYouPlayingBanjo</span>(name) <span class="op">{</span>
+  <span class="co">// Implement me</span>
+  <span class="cf">return</span> name<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<p>The goods:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">areYouPlayingBanjo</span>(name) <span class="op">{</span>
+  <span class="cf">return</span> name[<span class="dv">0</span>] <span class="op">===</span> <span class="st">&#39;R&#39;</span> <span class="op">||</span> name[<span class="dv">0</span>] <span class="op">===</span> <span class="st">&#39;r&#39;</span> <span class="op">?</span> name <span class="op">+</span> <span class="st">&quot; plays banjo&quot;</span> : name <span class="op">+</span> <span class="st">&quot; doesn&#39;t play banjo&quot;</span><span class="op">;</span>
+<span class="op">};</span></code></pre></div>
+<p>The three values here are what appears before the <code>?</code>, which will evaluate to true or false, and if that value evaluates to true, than the first value after the <code>?</code> is returned. If the first value is evaluated to false than the last expression is returned.</p>

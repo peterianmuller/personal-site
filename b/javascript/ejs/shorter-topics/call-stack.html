@@ -1,0 +1,30 @@
+<p>JavaScript function calls tend to be &quot;Expensive&quot; because they use a bunch of memory. This is partly because the prescence of the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Call_stack">call stack</a>. The call stack is a document created by the interpreter that lists the current function being invoked (or applied, or called), where that function is in the program, and some other data. The current function being called is stored at the &quot;top&quot; of the call stack, and if there are functions within it, those are moved to the top of the function. Once the parent function returns, than the top of the call stack is empty until control encounters the next function call. Let's check out the example provided by EJS:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">greet</span>(person) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Whatup &quot;</span> <span class="op">+</span> person)<span class="op">;</span>
+<span class="op">}</span>
+<span class="at">greet</span>()<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Peace&quot;</span>)<span class="op">;</span></code></pre></div>
+<p>Based on Haverbeke's description of what is going on page 47, we would expect the call stack to respond to this situation in the following way:</p>
+<p><code>top</code> (blank, before program runs)</p>
+<p style ="text-indent: 40px"><code>greet</code> (control has encountered the call to <code>greet</code>)</p>
+<p style ="text-indent: 80px"><code>console.log</code> (control has found the <code>console.log</code> call within the body of <code>greet</code>)
+<p style="text-indent: 40px"><code>greet</code> (control is in body of <code>greet</code> after finishing work of <code>console.log</code>)</p>
+<p><code>top</code> (blank, reached end of call to <code>greet</code>)</p>
+<p style="text-indent: 40px"><code>console.log</code> (control has now found the call to <code>console.log</code> in the global scope)</p>
+<p><code>top</code> (work of <code>console.log</code> is done and control has moved on to next line in program where there are no function calls)</p>
+<p>This document means some memory must be given to keep all these function calls saved. We can easily run out of memory if the call stack has no way to return to the <code>top</code> status where no function is being called. This will &quot;blow the stack&quot; and make our program crash.</p>
+<p>For example:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">doThis</span>()<span class="op">{</span>
+    <span class="cf">return</span> <span class="at">doThat</span>()<span class="op">;</span>
+<span class="op">}</span>
+<span class="kw">function</span> <span class="at">doThat</span>() <span class="op">{</span>
+    <span class="cf">return</span> <span class="at">doThis</span>()<span class="op">;</span>
+<span class="op">}</span>
+<span class="at">doThis</span>()<span class="op">;</span></code></pre></div>
+<p>What would the call stack look like for our super useless program?</p>
+<p><code>top</code></p>
+<p style ="text-indent: 40px"><code>doThis</code></p>
+<p style ="text-indent: 80px"><code>doThat</code></p>
+<p style ="text-indent: 120px"><code>doThis</code></p>
+<p style ="text-indent: 160px"><code>etc etc</code></p>
+<p>We have no way of getting back to <code>top</code> and would keep adding additional function calls as prescribed by the bodies of each <code>doThis</code> and <code>doThat</code>. To sum up function calls in JavaScript come with an additional cost because the call stack automatically updates for each function call.</p>

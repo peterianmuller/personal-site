@@ -1,0 +1,24 @@
+#lang racket
+
+
+(define(abs x)
+  (cond ((> x 0) x)
+        ((= x 0) 0)
+        ((< x 0) (- x))))
+
+
+(define (minus-two x)
+  (cond ((> x 0) (- x 2))
+        ((= x 0) x)
+        ((< x 0) (- x))))
+
+(define (minus-two-issue x)
+  (cond ((> x 0) - x 2)
+        ((= x 0) x)
+        ((< x 0) (- x))))
+
+(minus-two-issue 10)
+
+
+
+

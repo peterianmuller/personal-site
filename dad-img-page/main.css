@@ -1,0 +1,25 @@
+body {
+	background: #e3e7ed;
+}
+
+#container {
+  width: 40%;
+  float: left;
+  margin: 1%;
+}
+
+/*.moveUp {
+  position: relative;  Declared position allows for location changes 
+  top: -10.7rem;  /*Moves the image 2px closer to the top of the page 
+}*/
+
+
+
+p {
+  font-family: 'Oswald', sans-serif;
+  margin: 1%;
+  font-size: 1.5rem;
+  border-bottom: 2px solid green;
+  width: 82%;
+  padding-bottom: 5px;
+}

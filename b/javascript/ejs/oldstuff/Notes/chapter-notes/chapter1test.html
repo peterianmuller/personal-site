@@ -1,0 +1,180 @@
+<h1 id="chapter-1">Chapter 1</h1>
+<h1 id="data-and-bits">Data and Bits</h1>
+<p>Everything in a computer is data. Data is saved as long combinations of bits. Bits are anything with two values: 1's and 0's, on and off, weak/strong signals</p>
+<p>The storage system of a computer used binary code, which itself is made of bits.</p>
+<p>Values are made up of bits. The bits are divided up to make values. so a string is made up a number of bits, a variable is made up of a certain number of bits, function also etc.</p>
+<p>6 Basic types of bits (primitive values):</p>
+<ul>
+<li><p>strings</p></li>
+<li><p>Booleans</p></li>
+<li><p>numbers</p></li>
+<li><p>functions</p></li>
+<li><p>undefined values</p></li>
+<li><p>objects</p></li>
+</ul>
+<p>We create a value simply by typing it into our enviornment. Once that value is no longer in use the bits it was made up from dissipate back into the &quot;sea of bits&quot;</p>
+<h1 id="primitiveatomicfundamental-data-types">Primitive/Atomic/Fundamental Data types</h1>
+<h2 id="numbers">numbers</h2>
+<p>Numbers in JS can either be: -integers: 6, 8 (whole numbrs) -floats: 6.2, 4,5 (nnumbers with decimal points)</p>
+<p>Note that floats take up more memory than integers (thus we can use methods to round our floats to the nearest integer Math.floor etc)</p>
+<p>Scientific notation can be used for large and small numbers:</p>
+<pre><code>2e2 // 200
+2e-2 // 0.02</code></pre>
+<p>Also built in method for exponents:</p>
+<pre><code>
+Math.pow(base,exponent);
+Math.powe(2,3); //8</code></pre>
+<p>Because 64 bit computers can't be exact with decimal points, it's best to think of decimals as approximations.</p>
+<p>What fun things can we do with numbers!?!?</p>
+<p>Arithmetic! We can do arithmetic using math operators:</p>
+<p>/</p>
+<p>% (modulo or &quot;remainder&quot;, which gives us the remainder. For example (x % y) = remainder of (x / y)</p>
+<p>Special numbers:</p>
+<p>Infinity -Infinity NaN &quot;not a number&quot;. This is returned as the result of a nonsensical math operation. For example:</p>
+<p><code>javascript 0/0 // NaN Infinity - Infinity // NaN</code></p>
+<h2 id="strings">strings</h2>
+<p>Strings are the value type that represents text. Strings are created when we wrap characters within single or double quotes:</p>
+<pre><code>&quot;cat&quot;
+&quot;6&quot;</code></pre>
+<p>However, what if we want quotes inside of our string? We can use a  or escape key so that the Javascript interpreter parses whatever follows the backslash as a string.</p>
+<pre><code>console.log(&#39;she said \&#39;hello peter!\&#39;&#39;);
+// she said &#39;hello peter!&#39;
+console.log(&quot;The text following this should be on a new line: \n&quot; + &quot;I&#39;m on a new line!&quot;);
+//The text following this should be on a new line:
+//I&#39;m on a new line</code></pre>
+<p>We can use our handy addition operator with strings! This is called concatination</p>
+<pre><code>&quot;cat&quot; + &quot; 6&quot;; // &quot;cat 6&quot;</code></pre>
+<h2 id="operators">Operators!</h2>
+<p>We touched on arithmetic operators, but that is just the beginning of fun with operators!</p>
+<p>JS operators can be divided up into a few different camps:</p>
+<ul>
+<li><p>Urinary Operators</p></li>
+<li><p>Binary Operators</p></li>
+<li><p>Ternary Operators</p></li>
+</ul>
+<h3 id="urinary-operators-work-on-one-value.">Urinary Operators work on one value.</h3>
+<p>-makes a number negative</p>
+<pre><code>6;// positive value
+-6;// negative value</code></pre>
+<p>typeof prints the type of value of whatever comes to the right.</p>
+<pre><code>typeof &quot;cat&quot;; //&quot;string&quot;;
+typeof 6; //&quot;number&quot;;
+typeof NaN;// &quot;number&quot;;</code></pre>
+<h3 id="binary-operators-work-on-two-values.">Binary Operators work on two values.</h3>
+<p>The assignment operator = is one of the most common operators in use in JS. The = associates one value with another value.</p>
+<p>Also note that - can be both a urinary value (making a number negative) and a binary operator (used as a subtraction sign)</p>
+<pre><code>-6; //- as urinary operator
+6 - 5; //1 - as a binary operator</code></pre>
+<h2 id="boolean-values">Boolean values</h2>
+<p>Boolean values, named after the OG George Boole, can be equivalent to either true or false</p>
+<p>One way of using Boolean values is to use comparison operators to reason about different values.</p>
+<pre><code>6 &gt; 3; //true;
+5 &lt; 3; // false;
+5 == 5; //true.
+false == 0; //true. This is b/c both false and 0 carry the Boolean value of false.
+false === 0; // false. This is false because here we&#39;re using  deep comparison and comparing the actual values presented ,not just thier &quot;truthiness&quot; and &quot;falsiness&quot;.
+Infinity == -Infinity; //false! trippy. Remember that Infinity, -Infinity, and NaN are number types but behave different than numbers.</code></pre>
+<p>Beware of the comparison operator == which compares the &quot;truthiness&quot; and &quot;falsiness&quot; of different values. It's usually best to stick to using &quot;deep comparison&quot; operators === also known on the streets as &quot;threequals&quot;.</p>
+<h2 id="boolean-operators">Boolean Operators:</h2>
+<p>In reasoning about Booleans we can't really use comparison operators that we use with other values like strings and numbers. For example, we wouldn't really want to do the following operations with Booleans:</p>
+<pre><code>true + true; //2 When we use arithmetic operators, true gets parsed into a number value, 1.  
+false + false; //0 When used with arithmetic operators false gets parsed into the number 0.</code></pre>
+<p>However there are dope operators that enable us to reason about Boolean values in a more productive way. Instead of adding two true values together, suppose we want to see if two values are both equal to true?</p>
+<h3 id="and">&amp;&amp; and</h3>
+<p>&amp;&amp; AKA &quot;and&quot; checks if the values to the right and left of it both evaluate to the Boolean value of true. If they do, the whole expression will evaluate to true. If either value to the is false, the expression will return false. However, the &amp;&amp; will return different values based on where the false value is placed:</p>
+<pre><code>true &amp;&amp; true; // expression is true and will return true
+true &amp;&amp; false; // expression is false and will return false
+false &amp;&amp; false; //expression is false and will return false. In this case the interpreter doesn&#39;t even evaluate what is to the right of the &amp;&amp; operator because the expression is already equivalent to false regardless of what is on the right side of the &amp;&amp;.
+false &amp;&amp; true; //expression is false and will return false. In this case the interpreter doesn&#39;t even evaluate what is to the right of the &amp;&amp; operator because the expression is already equivalent to false regardless of what is on the right side of the &amp;&amp;.
+false &amp;&amp; undefinedVariable; //false;
+true &amp;&amp; undefinedVariable; // ReferenceError undefinedVariable is undefined. In the above example, the interpreter never evaluates undefinedVariable because it already found a false value in the false to the left of the &amp;&amp;.</code></pre>
+<p>We can short-circuit the &amp;&amp; by placing a false value on the left side of the operator. Upon evaluating a false value to the left of the &amp;&amp; operator, the interpreter will spit out the value and not even evaluate the value to the right.</p>
+<h3 id="or">|| or</h3>
+<p>The or || Boolean operator will return true if the value on either side of the || evaluates to true.</p>
+<pre><code>true || true; //evaluates to true and returns true.
+true || false; //evaluats to true and returns true. Again the interpreter never reaches the expression to the right side of the operator. So we could do the following:
+true || undefinedVariable; // Expression evaluated to true and returns true.
+false || undefinedVariable; // Expression returns a reference error.
+false || 0; //expression evaluates to false and returns 0.</code></pre>
+<p>The way to shot-circuit the || operator is to have a true value on the left side of the operator, because the interpreter only needs to find a true value to return true. If that value is supplied on the left side of the operator than the interpreter will simply return the value on the right side of the operator.</p>
+<h3 id="not">! Not</h3>
+<p>This is a urinary Boolean operator that changes the Boolean value of the expression to its right</p>
+<pre><code>Boolean(!NaN); //true</code></pre>
+<p>When we chain different operators (arithmetic operators, comparison operators, and Boolean operators it can be repetetive to keep placing everything inside of ()). For example:</p>
+<pre><code> ((5 + 1) &gt; 6) &amp;&amp; ((2 * (4 - 3)) === 50); // false</code></pre>
+<p>The JS interpreter has a built-in mechanism for evaluating the operators in the following way:</p>
+<p>|| lowest precedence &amp;&amp; higher precedence &lt;, ==, &gt; highest precedence</p>
+<p>Thus, the comparison operators will be evaluated first, then &amp;&amp;, then ||.</p>
+<p>```javascript</p>
+<p>5 + 1 &gt; 6 &amp;&amp; 2 * 4 - 3 === 50; //false</p>
+<p>```</p>
+<h3 id="ternary-operators">ternary operators</h3>
+<p>ternary operators reason about three values. It looks like hte following:</p>
+<pre><code>true ? 4 : 5;</code></pre>
+<p>There is a Boolean value followed by a ?. After the ? is a value to the left of a : and a value to the right of the :. IF the Boolean value evaluates to true the value to the left of the colon is returned. If the Boolean evaluates to false, than the value to the right is returned.</p>
+<h2 id="undefined-values">Undefined values</h2>
+<p>So far we've seen 3 types of primitives: strings, numbers, Booleans. The last type of primitive we're going to look at for this chapter is undefined values. There are two types of undefined values: undefined and null.</p>
+<p>Undefined and null are values themselves that don't carry any information. They are both of Boolean type false. Many values will return undefined in various JS interpreters and environments.</p>
+<h1 id="type-coercion">Type Coercion</h1>
+<p>Javascript accepts many programs to be run even if they contain syntactic errors that can sometimes lead to unintended consequences.</p>
+<pre><code>8 * null; //0 null gets coerced to a number. null&#39;s numeric value is 0 so the expression become 8 * 0 // 0
+null + false; //0. null and false are coerced to numeric values and are turned into 0 and we get 0 as a result.
+null + (3 &gt; 2); //1
+&quot;5&quot; + 1; // 51. strings can concatinate, so the 1 gets parsed into a string here.
+5 + &quot;1&quot;, // 51
+&quot;5&quot; * 5; // 25; strings can&#39;t be multiplied so here the string is turned into a number.
+&quot;one&quot; * 4; //NaN;
+&quot;one&quot; + 4; // &quot;one4&quot; strings can use the + operator, so the 4 gets parsed into a string.
+ ```
+ Thus, we should be careful with syntactic errors. Sometimes the interpreter won&#39;t throw an error message and we&#39;ll have to figure out where type coercion happened.
+
+ Also, once NaN gets introduced to a program and is used again, NaN will be the result of subsequent operations.
+
+ ```javascript
+var result = &quot;one&quot; * 4;
+result + 7; // NaN
+result + 0; // NaN</code></pre>
+<p>A little more in-depth with ==</p>
+<p>When we compare values of the same type using == we shoudl get true.</p>
+<pre><code>5 == 10; // true, truthiness of vales are the same
+undefined == undefined; //truth
+NaN == NaN; // false. NaN is a value that does not share truthiness with itself.</code></pre>
+<p>However, when we use double equals sign to compare values of different types the interpreter uses confusing rules to determine truthiness and falsiness. What usually happens is the interpreter tries to convert one value to the other value's type.</p>
+<p>There is one rule that we can remember here! When null or undefined is places on either side of the operator, the expression produces true only if both sides are null or undefined.</p>
+<pre><code>null == undefined; //true
+null == null; // true
+undefined == undefined; //true
+undefined == null; // true</code></pre>
+<p>We can utilize this behavouir to check if something has a real value by using the == or != with null or undefined. This will work because as we've seen, undefined and null are both values that carry no information. And we know that the above rule about undefined or null on either side of == will return true. Thus if ourValue == null //true or ourValue == undefined // true than ourValue has no value (shares truthiness with undefined or null).</p>
+<p>Below we declare a variable that is undefined than compare its truthiness with null using ==. This returns true so result has no value.</p>
+<pre><code>var result;
+result == null; // true.
+result != null; //false. still means result has no value.</code></pre>
+<p>So we can use == to test if something has a value (and isn't undefined or null).</p>
+<p>However, == still uses type coercion, so we can use the === to compare precise values.</p>
+<p>Rules for strings/numbers as Booleans: 0, NaN, &quot;&quot; // false. Also both undefined values (undefined and null count as false).</p>
+<pre><code> 0 == false; //true (comparing truthiness with type coercion)
+ &quot;&quot; == false; //true</code></pre>
+<p>However, because the above method == leads to unexpected results, we should go ahead and use === to protect ourselves from unwanted type coercion.</p>
+<pre><code> 0 === false; //false comparing precise values
+ &quot;&quot; === false; // false. Comparing precise values</code></pre>
+<h2 id="short-circuiting-logical-operators">short-circuiting logical operators</h2>
+<p>We've seen this before! &amp;&amp; and || don't have to evaluate both values based on if the value to the left is either of Boolean true or false.</p>
+<p>For ||, which returns true if either the value on the left or the right is true, we can simply place a value with Boolean type true on the left and the whole expression will be evaluated to true and the value on the left will be returned:</p>
+<pre><code>true || ffffff; // true
+false || fffff; //reference error fffff not defined.</code></pre>
+<p>For &amp;&amp;, if the value on the left is of Boolean type false, the whole expression is false and the value on the left will be returned.</p>
+<pre><code>false &amp;&amp; &quot;cat&quot;; // false
+true &amp;&amp; false; // false</code></pre>
+<h1 id="summary">Summary</h1>
+<p>For this chapter we looked at four primitive data types: * strings * numbers * Booleans * Undefined values</p>
+<p>These values are created simply by typing thier name: true, &quot;cat&quot;, 6, null.</p>
+<p>These values can be manipulated and reasoned about using:</p>
+<ul>
+<li><p>binary arithmetic operators: +, -, /, %</p></li>
+<li><p>binary string operators: +</p></li>
+<li><p>comparison operators (Binary) &lt;, ==, ===, !=, !==, &gt;, &gt;=, &lt;=,</p></li>
+<li><p>logical operators: ||, &amp;&amp;, !</p></li>
+<li><p>Ternary operators: true? 5: 7</p></li>
+<li><p>urinary operators: - to negative a number (make negative), ! to negative logically (switch Boolean value), and typeof to find a value's type.</p></li>
+</ul>
