@@ -1,0 +1,29 @@
+body {
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
+a {
+  transition: .4s;
+  color:black;
+  padding-top: 6px;
+  display: inline-block;
+  height: 25px;
+  width: 175px;
+  border: 2px solid black;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 2px;
+  text-align: center;
+}
+
+a:hover {
+  color: white;
+  background-color: darkgreen;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
