@@ -1,19 +1,34 @@
 body {
-	background: #e3e7ed;
-  position: relative;
+  width:960px;
 }
 
-#container {
-  width: 40%;
+.col {
+  display: inline-block;
+}
+
+img {
+  max-width: 200px;
+  max-height: 300px;
+  display: inline-block;
+}
+
+
+/*using floats*/
+/*div {
+  width: 500px;
+}
+
+.left-col {
   float: left;
-  margin: 1%;
 }
 
-/*.moveUp {
-  position: relative;  Declared position allows for location changes 
-  top: -10.7rem;  /*Moves the image 2px closer to the top of the page 
-}*/
+.right-col {
+  float: right;
+}
 
+.clear {
+  clear:both;
+}*/
 
 
 p {

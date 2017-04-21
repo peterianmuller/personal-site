@@ -1,0 +1,55 @@
+<p>A higher order function is a function that either accepts a function value as an argument or returns a function (85). Higher order functions are important and powerful because of their ability to enable to programmer to abstract over actions, meaning that we can forget about basic non-relevant details such as iteration. (85)</p>
+<p>Let's explore a few dope examples of higher order functions.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">greaterThan <span class="op">=</span> n <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">return</span>  m <span class="op">=&gt;</span> <span class="op">{</span>
+      <span class="cf">return</span> m <span class="op">&lt;</span> n<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">};</span>
+
+greaterThan6 <span class="op">=</span> <span class="at">greaterThan</span>(<span class="dv">6</span>)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(greatherThan6)<span class="op">;</span> <span class="co">// [function] Closure!!</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">greaterThan6</span>(<span class="dv">8</span>))<span class="op">;</span> <span class="co">// false</span></code></pre></div>
+<p>Above we see a dope example of using a higher order function that returns a function (one of the requirements of what constitutes a higher order function). This is very similar to the examples of <a href="closure.html">closure</a> because the local variable <code>m</code> is accessed through the call to the enclosing function <code>greaterThan</code>.</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">noisy <span class="op">=</span> f <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">return</span> arg <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;calling with&quot;</span><span class="op">,</span> arg)<span class="op">;</span>
+    <span class="kw">var</span> val <span class="op">=</span> <span class="at">f</span>(arg)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;called with&quot;</span><span class="op">,</span> arg<span class="op">,</span> <span class="st">&quot;- got&quot;</span><span class="op">,</span> val)<span class="op">;</span>
+    <span class="cf">return</span> val<span class="op">;</span>
+  <span class="op">}</span>  
+<span class="op">};</span>
+
+<span class="at">noisy</span>(Boolean)<span class="op">;</span> <span class="co">//Doesn&#39;t print anything to console.</span>
+
+<span class="at">noisy</span>(<span class="at">Boolean</span>(<span class="st">&quot;hello&quot;</span>))<span class="op">;</span> <span class="co">//Doesn&#39;t print anything to console either b/c this will get evaluated to noisy(true);</span>
+
+<span class="at">noisy</span>(Boolean)(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>
+<span class="co">// &quot;calling with hello&quot;</span>
+<span class="co">// &quot;called with hello - got true&quot;</span>
+
+<span class="at">noisy</span>(greaterThan6)(<span class="dv">50</span>)<span class="op">;</span>
+<span class="co">// &quot;calling with 50&quot;</span>
+<span class="co">// &quot;called with 50 - got true&quot;</span></code></pre></div>
+<p><code>noisy</code> takes in a function and adds a side effect of printing information about the arguments passed to the function and then the result of the function. Note that this side effect doesn't affect the original work of the function - we don't need to worry about the work of the original function and can be sure that <code>Boolean</code> and <code>greaterThan6</code> will both perform as desired. This is crucial for higher order function success - that we can indeed abstract away details because those details (in this case, the work of <code>Boolean</code> and <code>greaterThan6</code>) will not change as we reason about them.</p>
+<p>One more for the road!</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript">
+unless <span class="op">=</span> (test<span class="op">,</span>then) <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">if</span> (<span class="op">!</span>test) <span class="op">{</span>
+    <span class="at">then</span>()<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+repeat <span class="op">=</span> (times<span class="op">,</span> body) <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> times<span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+    <span class="at">body</span>(i)<span class="op">;</span>
+  <span class="op">}</span> 
+<span class="op">}</span>
+
+<span class="at">repeat</span>(<span class="dv">3</span><span class="op">,</span> n <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="at">unless</span>(n <span class="op">%</span> <span class="dv">2</span><span class="op">,</span> () <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;n is:&quot;</span><span class="op">,</span> n)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(n<span class="op">,</span> <span class="st">&quot;is even&quot;</span>)<span class="op">;</span>
+  <span class="op">}</span>)
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>Here we have a way to execute the body of a function unless a test doesn't pass. The body of unless has access to <code>n</code> per lexical scoping rules that decree that nested functions have access to the variables/arguments that belong to the enclosing function (86). Also, what's wild is that <code>times</code> parameter is a number, and that value gets used in the test.</p>
+<p>The callback passed to repeat is anonymous and the n parameter is decided by the loop inside the body of repeat. n follows the behavior of i, so for the first iteration of <code>body</code>, n is set to 0, than 1 for the next iteration and finally 2, which is the last time <code>i &lt; times</code> will return true.</p>
