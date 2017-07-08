@@ -7,28 +7,15 @@ body {
 }
 
 img {
-  max-width: 200px;
   max-height: 300px;
   display: inline-block;
 }
 
-
-/*using floats*/
-/*div {
-  width: 500px;
+#wave{
+  width: 704px;
+  top: -6px;
+  position: relative;
 }
-
-.left-col {
-  float: left;
-}
-
-.right-col {
-  float: right;
-}
-
-.clear {
-  clear:both;
-}*/
 
 
 p {
