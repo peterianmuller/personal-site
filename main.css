@@ -2,6 +2,10 @@ body {
   font-family: Helvetica, Arial, Sans-Serif;
 }
 
+* {
+  background-color: #39FF14;
+}
+
 a {
   transition: .4s;
   color:black;
@@ -30,4 +34,5 @@ a:hover {
 
 #header {
   font-size: 3em;
+  color: white;
 }
