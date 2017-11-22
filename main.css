@@ -1,9 +1,13 @@
 body {
-  font-family: Helvetica, Arial, Sans-Serif;
+
 }
 
 * {
   background-color: #39FF14;
+}
+
+.giphy-embed {
+  float: left;
 }
 
 a {
@@ -33,6 +37,12 @@ a:hover {
 }
 
 #header {
+  font-family: 'Roboto', sans-serif;
   font-size: 3em;
   color: white;
+  display: block;
+}
+
+#gifs{
+  margin: 0 auto
 }
