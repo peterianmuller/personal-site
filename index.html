@@ -46,5 +46,21 @@
   
   </div>  
 
-	</body>
+  </body>
+
+  <script type="text/javascript">
+    // want to be able to click my name and add border
+    const name = document.querySelector('#header');
+    console.log(name);
+    name.addEventListener('click', (e)=> {
+        console.log(name.classList);
+        // check if class exists if not add it
+        if (name.classList[0] !== 'add-border') {
+          name.classList.add('add-border');
+        } else {
+          name.classList.remove('add-border');  
+        }
+    })    
+
+  </script>
 </html>

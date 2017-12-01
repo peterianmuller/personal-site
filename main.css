@@ -60,3 +60,7 @@ iframe {
 #content {
   display: block;
 }
+
+.add-border {
+  border: 2px solid black;
+}
