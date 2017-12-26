@@ -1,3 +1,8 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../main.css">
+</head>
+
+
 <p>These are some thoughts on the difference between the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"><code>splice</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice"><code>slice</code></a> methods that reason about arrays. Both work on arrays and begin work at the index passed as the first argument to each method. <code>splice</code> will remove all elements starting at the index of the first parameter, while <code>slice</code> will make a copy and leave the original array untouched:</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> myArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>
 <span class="va">console</span>.<span class="at">log</span>(<span class="va">myArray</span>.<span class="at">slice</span>(<span class="dv">2</span>))<span class="op">;</span> <span class="co">//[3,4,5]</span>

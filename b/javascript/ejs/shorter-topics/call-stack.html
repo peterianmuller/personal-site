@@ -1,3 +1,9 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../../../../main.css">
+</head>
+
+
+
 <p>JavaScript function calls tend to be &quot;Expensive&quot; because they use a bunch of memory. This is partly because the prescence of the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Call_stack">call stack</a>. The call stack is a document created by the interpreter that lists the current function being invoked (or applied, or called), where that function is in the program, and some other data. The current function being called is stored at the &quot;top&quot; of the call stack, and if there are functions within it, those are moved to the top of the function. Once the parent function returns, than the top of the call stack is empty until control encounters the next function call. Let's check out the example provided by EJS:</p>
 <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">greet</span>(person) <span class="op">{</span>
     <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Whatup &quot;</span> <span class="op">+</span> person)<span class="op">;</span>
