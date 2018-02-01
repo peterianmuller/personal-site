@@ -10,7 +10,6 @@ let allLi = document.querySelectorAll('li');
   // save reference to this text as word
 // create variable strong referencing a new strong element
   // place word inside strong 
-  // TODO ->
 // replace inner html of el with strong replacing text from beginning of li to first - char in li with strong   
 
 makeFirstWordBold = () => {
@@ -19,7 +18,9 @@ makeFirstWordBold = () => {
 		let word = '', foundHyphen = false, hyphenIndex; 
 		el.innerText.split('').forEach((char, index)=>{
       if (!foundHyphen || char === '-') {
-        word += char;
+        if (char !== '-') {
+            word += char;
+        }
         if (char === '-') {
         	foundHyphen = true;
         	hyphenIndex = index;
@@ -27,12 +28,8 @@ makeFirstWordBold = () => {
       }
 		});
 
-    let strong = document.createElement('strong'); 
-    strong.innerText = 'word'
-
-    // remove first part of innerHTML of each li and replace with strong el
-
-    let replace = el.innerHTML.slice(hyphenIndex,el.innerHTML.length -1);
+    let replace = el.innerHTML.slice(hyphenIndex, el.innerHTML.length -1);
+    el.innerHTML = '<strong>' + word + '</strong>' + replace;
 
 	});	
 }
