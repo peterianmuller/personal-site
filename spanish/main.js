@@ -14,30 +14,30 @@ let allLi = document.querySelectorAll('li');
 
 // Issue -> end of sentence being cut off
 
-// makeFirstWordBold = () => {
-// 	console.log(allLi);
-// 	allLi.forEach(el=>{
-// 		let word = '', foundHyphen = false, hyphenIndex; 
-// 		el.innerText.split('').forEach((char, index)=>{
-//       if (!foundHyphen || char === '-') {
-//         if (char !== '-') {
-//             word += char;
-//         }
-//         if (char === '-') {
-//         	foundHyphen = true;
-//         	hyphenIndex = index;
-//         }
-//       }
-// 		});
+makeFirstWordBold = () => {
+	console.log(allLi);
+	allLi.forEach(el=>{
+		let word = '', foundHyphen = false, hyphenIndex; 
+		el.innerText.split('').forEach((char, index)=>{
+      if (!foundHyphen) {
+        if (char !== '-') {
+            word += char;
+        }
+        if (char === '-') {
+        	foundHyphen = true;
+        	hyphenIndex = index;
+        }
+      }
+		});
 
-//     let replace = el.innerHTML.slice(hyphenIndex, el.innerHTML.length -1);
-//     el.innerHTML = '<strong>' + word + '</strong>' + replace;
+    let replace = el.innerHTML.slice(hyphenIndex, el.innerHTML.length -1);
+    el.innerHTML = '<strong>' + word + '</strong>' + replace;
 
-// 	});	
-// }
+	});	
+}
 
 
-// makeFirstWordBold();
+//makeFirstWordBold();
 
 
 
