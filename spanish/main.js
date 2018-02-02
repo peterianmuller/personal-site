@@ -12,27 +12,54 @@ let allLi = document.querySelectorAll('li');
   // place word inside strong 
 // replace inner html of el with strong replacing text from beginning of li to first - char in li with strong   
 
-makeFirstWordBold = () => {
-	console.log(allLi);
-	allLi.forEach(el=>{
-		let word = '', foundHyphen = false, hyphenIndex; 
-		el.innerText.split('').forEach((char, index)=>{
-      if (!foundHyphen || char === '-') {
-        if (char !== '-') {
-            word += char;
-        }
-        if (char === '-') {
-        	foundHyphen = true;
-        	hyphenIndex = index;
-        }
-      }
-		});
+// Issue -> end of sentence being cut off
 
-    let replace = el.innerHTML.slice(hyphenIndex, el.innerHTML.length -1);
-    el.innerHTML = '<strong>' + word + '</strong>' + replace;
+// makeFirstWordBold = () => {
+// 	console.log(allLi);
+// 	allLi.forEach(el=>{
+// 		let word = '', foundHyphen = false, hyphenIndex; 
+// 		el.innerText.split('').forEach((char, index)=>{
+//       if (!foundHyphen || char === '-') {
+//         if (char !== '-') {
+//             word += char;
+//         }
+//         if (char === '-') {
+//         	foundHyphen = true;
+//         	hyphenIndex = index;
+//         }
+//       }
+// 		});
 
-	});	
+//     let replace = el.innerHTML.slice(hyphenIndex, el.innerHTML.length -1);
+//     el.innerHTML = '<strong>' + word + '</strong>' + replace;
+
+// 	});	
+// }
+
+
+// makeFirstWordBold();
+
+
+
+
+//////////////////////////
+
+getRandomColor = () => {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color
 }
 
 
-makeFirstWordBold();
+changeBRColor = () => {
+  var star = document.querySelector('*');
+  console.log(star.style);
+  //console.log(document.body.style.backgroundColor );
+  document.body.style.backgroundColor = getRandomColor();
+  console.log(star.style.backgroundColor);
+}
+
+document.getElementById('bg-pick').onclick = changeBRColor;
