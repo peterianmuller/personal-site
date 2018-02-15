@@ -34,14 +34,26 @@ function createLiWithHyphen() {
   return x;
 }
 
-function addWord(){
-  var myForm = document.getElementById('addWordForm');
-  formData = new FormData(myForm);
-  console.log(formData.getAll('word'));
-  console.log(formData.getAll('definition'));
-  let li = createLiWithHyphen();
-  li.innerHTML = '<strong>' + formData.getAll('word') + '</strong>  - ' + formData.getAll('definition');
-  document.getElementById('newWords').appendChild(li);
+
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("newWords").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
 }
-//addWord();
+
+
 
