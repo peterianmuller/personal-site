@@ -29,16 +29,9 @@ makeFirstWordBold = () => {
 makeFirstWordBold();
 
 
-function createLiWithHyphen() {
-  var x = document.createElement("LI");
-  return x;
-}
-
-
-
-function newElement() {
+function addWord() {
   var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
+  var inputValue = document.getElementById("word").value + ' ' + document.getElementById("definition").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
@@ -46,13 +39,9 @@ function newElement() {
   } else {
     document.getElementById("newWords").appendChild(li);
   }
-  document.getElementById("myInput").value = "";
+  document.getElementById("word").value = "";
+  document.getElementById("definition").value = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
 }
 
 
