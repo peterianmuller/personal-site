@@ -16,8 +16,6 @@ makeFirstWordBold = () => {
       }
 		});
 
-    //console.log(hyphenIndex);
-
     let replace = el.innerHTML.slice(hyphenIndex, originalLength + 1);
     //console.log(replace);
     el.innerHTML = '<strong>' + word + '</strong>' + replace;
@@ -43,6 +41,7 @@ function addWord() {
   document.getElementById("definition").value = "";
 
 }
+
 
 
 
