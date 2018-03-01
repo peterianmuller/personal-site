@@ -3,13 +3,12 @@
 	padding: 0;
 }
 
-#page-wrapper {
-	width: 100%;
-	margin: 0 auto;
+ul#nav {
+	list-style: none;
 }
 
 ul#nav li {
-	display: inline-block;
+	float: left;
 }
 
 ul#nav li a {
