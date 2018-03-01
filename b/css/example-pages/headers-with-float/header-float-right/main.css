@@ -3,21 +3,21 @@
 	padding: 0;
 }
 
+
 ul#nav {
 	list-style: none;
 }
 
 ul#nav li {
-	float: left;
+	float: right;
+	padding: 0 5px;
 }
 
 ul#nav li a {
 	text-decoration: none;
 	font-weight: bold;
-	padding: 0 5px;
 }
 
 .clear {
-	clear:both;
+	clear: both;
 }
-
