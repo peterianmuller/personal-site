@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="blog-post.css">
+</head>
+<body>
+
+	<p>So the idea of giving the body a border is kinda trippy. Since all html content elements are descendents of the body, if we give the body element a border via CSS, it will go around the entirety of all visible html.</p>
+
+	<p>Let's say we have the following html file and we've linked our css in the head tag.</p>
+
+	<p id="mono">The css will create a border of width 5px around the edge of the page. Note that there is a default margin given so the current version of the margin does not extend all the way to the edge of the screen. <a href="../example-pages/body-border-mocks/basic-border.html">Current page</a>.</p>
+
+
+	<div id="code-example">
+
+		<p>body {</p>
+			<p class="indent">border: 5px solid blue;</p>
+		<p>}</p>
+
+	</div>
+
+	<p>If we wanted to extend the border to the end of the screen we would include the following in the CSS rule. Remember that only pixel values of 0 do not require a &quot;px&quot; suffix after the number. <a href="../example-pages/body-border-mocks/border-extended.html">Border Extended</a>.</p>
+
+
+	<div id="code-example">
+
+		<p>body {</p>
+		<p class="indent">border: 5px solid blue;</p>
+		<p class="indent">margin: 0;</p>
+		<p>}</p>
+		
+
+	</div>
+
+
+	<p>Centering an html element can be used with the <code>margin: auto;</code> property. However, when applied to our body rules, the border doesn't move. At first I thought: how come the border doesn't move to the center of the page? Then I realized the body is in the center of the page by default. If we wish to move the body's border to the center of the page, then we need to add space on either side of the body. This can be done with the <code>content-width</code> or just <code>width</code> property. If we want the border to take up half the page and respond to a user's change of the size of the screen, we can use the % metric with the width rule. <a href="../example-pages/body-border-mocks/border-centered.html">Current Size</a>.</p>
+
+
+	<div id="code-example">
+
+		<p>body {</p>
+		<p class="indent">border: 5px solid blue;</p>
+		<p class="indent">width: 50%;</p>
+		<p class="indent">margin: 0 auto;</p>
+		<p>}</p>
+
+	</div>
+
+
+</body>
+</html>
+

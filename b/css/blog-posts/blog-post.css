@@ -1,0 +1,17 @@
+* {
+  background-color: #39FF14;
+}
+
+div#code-example {
+	font-family: monospace;
+}
+
+div#code-example .indent {
+	padding-left: 10px;
+}
+
+
+div#code-example p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
