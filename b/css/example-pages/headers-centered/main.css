@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+div#nav-containter {
+	width: 100%;
+}
+
+ul#nav {
+	list-style: none;
+	margin: 0 auto;
+	text-align: center;
+}
+
+ul#nav li {
+	display: inline-block;
+} 
+
+ul#nav li a {
+	text-decoration: none;
+}
