@@ -154,19 +154,38 @@ body {
 
 /*
   ================================
+  Links
+  ================================
+*/
+
+a {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+/*
+  ================================
+  Header
+  ================================
+*/
+
+.primary-nav ul {
+  padding-top: 20px;
+}
+
+.primary-nav ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+/*
+  ================================
   Footer
   ================================
 */
 
 .primary-nav-footer ul li {
   display: inline-block;
-  text-decoration: none;
-  text-transform: capitalize;
-}
-
-.primary-nav-footer ul li a {
-  text-decoration: none;
-  text-transform: uppercase;
 }
 
 /*
