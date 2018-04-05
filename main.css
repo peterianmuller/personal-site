@@ -3,19 +3,86 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -24,21 +91,34 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
@@ -48,7 +128,7 @@ table {
 }
 
 * {
-  background-color: #39FF14;
+  background-color: #39ff14;
 }
 
 body {
@@ -64,21 +144,6 @@ body {
   margin: 0 auto;
 }
 
-.primary-nav-header ul {
-  text-align: right;
-}
-
-.primary-nav-header ul li {
-  display: inline-block;
-  text-decoration: none;
-  text-transform: capitalize; 
-}
-
-.primary-nav-header ul li a {
-  text-decoration: none;
-  text-transform: uppercase; 
-}
-
 .col-1-3 {
   width: 33%;
 }
@@ -87,6 +152,29 @@ body {
   width: 63%;
 }
 
+/*
+  ================================
+  Footer
+  ================================
+*/
 
+.primary-nav-footer ul li {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: capitalize;
+}
 
+.primary-nav-footer ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
+/*
+  ================================
+  Projects
+  ================================
+*/
+
+.projects {
+  padding: 15px 0;
+}

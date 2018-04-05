@@ -21,61 +21,48 @@
     <h4>Software Engineer, Educator, Musician</h4>
   </header>
 
-    <nav class="primary-nav-header">   
-      <ul>
-        <li><a href="https://www.linkedin.com/in/peter-ian-muller/">LinkedIn</a></li>
-        <li><a href="https://github.com/peterianmuller">GitHub</a></li>
-        <li><a href="https://angel.co/peter-muller-9">Angellist</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=peterianmuller@gmail.com" tagret="_blank">Email</a></li>
-      </ul>
-    </nav> 
 
+  <section class="col-2-3 projects">
 
-    <section class="col-2-3">
+    <h2>Projects</h2>
 
-      <h2>Projects</h2>
+    <section>
+      <a href="b/blogroll.html">Code Blog</a>
+      <p>Here is where I write about the stuff I've learned and how to use new technologies!</p>
+    
+    </section>
+      <a href="jm-photo/index.html">John Muller's Photos</a>
+      <p>A look into the dope photography of my Dad John</p>
+    <section>
+      <a href="music/index.html">Music</a>
+      <p>Some links to music I've been working on</p>
+    </section>
 
-      <section>
-        <a href="b/blogroll.html">Code Blog</a>
-        <p>Here is where I write about the stuff I've learned and how to use new technologies!</p>
-      
-      </section>
-        <a href="jm-photo/index.html">John Muller's Photos</a>
-        <p>A look into the dope photography of my Dad John</p>
-      <section>
-        <a href="music/index.html">Music</a>
-        <p>Some links to music I've been working on</p>
-      </section>
-
-      <section>
+    <section>
       <a href="spanish/index.html">Spanish Study</a>
       <p>Vocabulary and quotes from books in Spanish</p>
-        
-      </section>
-
-  
+      
     </section>
 
 
-  </div>
+  </section>
+
+
+  <nav class="primary-nav-footer">   
+    <ul>
+      <li><a href="https://www.linkedin.com/in/peter-ian-muller/">LinkedIn</a></li>
+      <li><a href="https://github.com/peterianmuller">GitHub</a></li>
+      <li><a href="https://angel.co/peter-muller-9">Angellist</a></li>
+      <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=peterianmuller@gmail.com" tagret="_blank">Email</a></li>
+    </ul>
+  </nav> 
+
   
+  </div>
+
+
 
 
   </body>
 
-  <script type="text/javascript">
-    // want to be able to click my name and add border
-    const name = document.querySelector('#header');
-    console.log(name);
-    name.addEventListener('click', (e)=> {
-        console.log(name.classList);
-        // check if class exists if not add it
-        if (name.classList[0] !== 'add-border') {
-          name.classList.add('add-border');
-        } else {
-          name.classList.remove('add-border');  
-        }
-    })    
-
-  </script>
 </html>
