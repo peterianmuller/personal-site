@@ -197,3 +197,19 @@ a {
 .projects {
   padding: 15px 0;
 }
+
+/*
+  ================================
+  Music
+  ================================
+*/
+
+.external-iframes {
+  margin: 20px;
+  text-align: center;
+}
+
+.external-iframes iframe {
+  width: 40%;
+  height: 200px;
+}
