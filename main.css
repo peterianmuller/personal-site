@@ -136,6 +136,20 @@ li {
   padding: 5px 0;
 }
 
+/*
+  ================================
+  Headers
+  ================================
+*/
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
 body {
   padding: 10px 15px;
   font-family: 'PT Sans', sans-serif;
