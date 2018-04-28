@@ -128,11 +128,17 @@ table {
 }
 
 * {
-  background-color: rgb(66, 134, 244);
+  background-color: rgb(105, 182, 236);
+}
+
+p,
+li {
+  padding: 5px 0;
 }
 
 body {
   padding: 10px 15px;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .primary-header {

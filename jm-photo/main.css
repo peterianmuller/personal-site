@@ -1,8 +1,3 @@
-body {
-  width:960px;
-  font-size: 62.5%;
-}
-
 .col {
   display: inline-block;
 }
@@ -13,15 +8,13 @@ img {
   padding-right: 1px;
 }
 
-#wave{
+#wave {
   width: 704px;
   position: relative;
   height: 300px;
 }
 
-
 p {
-  font-family: 'Oswald', sans-serif;
   font-size: 1.5rem;
   border-bottom: 2px solid green;
   width: 94.7%;
