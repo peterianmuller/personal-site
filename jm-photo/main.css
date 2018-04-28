@@ -13,11 +13,3 @@ img {
   position: relative;
   height: 300px;
 }
-
-p {
-  font-size: 1.5rem;
-  border-bottom: 2px solid green;
-  width: 94.7%;
-  /*padding-bottom: 5px;*/
-  margin-bottom: 5px;
-}
