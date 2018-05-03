@@ -247,3 +247,52 @@ a {
   width: 40%;
   height: 200px;
 }
+
+/*
+  ================================
+  Devices
+  ================================
+*/
+
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 4em;
+    top: 10px;
+  }
+  .container {
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+    width: 80%;
+  }
+
+  .container > *,
+  .user-input-section > * {
+    margin-top: 5%;
+  }
+
+  input.user-input {
+    display: inline-block;
+    font-size: 1em;
+    height: 2em;
+    line-height: 1em;
+    padding: 0;
+  }
+
+  button {
+    margin: auto;
+    display: block;
+    font-size: 1.5em;
+  }
+  section.col-2-3.projects {
+    display: none;
+
+    /*currently removing projects info on mobile*/
+    /*width: auto;*/
+  }
+
+  nav.primary-nav-footer ul li a i {
+    transform: scale(2.5, 2.5);
+    margin: 0.8em;
+  }
+}
