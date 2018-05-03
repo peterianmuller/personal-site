@@ -295,4 +295,12 @@ a {
     transform: scale(2.5, 2.5);
     margin: 0.8em;
   }
+
+  .primary-nav ul li {
+    padding: 5px 10px;
+  }
+
+  h2 {
+    margin-bottom: 8px;
+  }
 }
