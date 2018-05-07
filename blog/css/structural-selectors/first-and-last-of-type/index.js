@@ -31,19 +31,23 @@ document.querySelector('.select-last-of-type-section').addEventListener('click',
 });
 
 let firstOrLastChildButtons = document.querySelectorAll(`button[class*='child']`);
-firstOrLastChildButtons.forEach(e => {
-	e.addEventListener('click', e => {
-		let firstOrLast = e.target.textContent.indexOf('first') > -1 ? 'first' : 'last';
-		let content = document.querySelector('.first-and-last-child-content');
-		let children = content.querySelectorAll(` :${firstOrLast}-child`);
-		children.forEach(el => {
-			if (el.classList.contains(`section-${firstOrLast}-child`)) {
-				el.classList.remove(`section-${firstOrLast}-child`);
-			} else {
-				el.classList.add(`section-${firstOrLast}-child`);
-			}
-		});
-		e.target.textContent =
-			e.target.textContent.indexOf('Enough') > -1 ? `Check out ${firstOrLast}-child` : `Enough of ${firstOrLast}-child`;
+
+updateFirstOrLastChild = e => {
+	let firstOrLast = e.target.textContent.indexOf('first') > -1 ? 'first' : 'last';
+	let children = document.querySelector('.first-and-last-child-content').querySelectorAll(` :${firstOrLast}-child`);
+	children.forEach(el => {
+		if (el.classList.contains(`section-${firstOrLast}-child`)) {
+			el.classList.remove(`section-${firstOrLast}-child`);
+		} else {
+			el.classList.add(`section-${firstOrLast}-child`);
+		}
 	});
+	e.target.textContent =
+		e.target.textContent.indexOf('Enough') > -1
+			? `Check out section${firstOrLast}-child`
+			: `Enough of section${firstOrLast}-child`;
+};
+
+firstOrLastChildButtons.forEach(el => {
+	el.addEventListener('click', updateFirstOrLastChild);
 });
