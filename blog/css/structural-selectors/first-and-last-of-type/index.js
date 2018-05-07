@@ -1,33 +1,23 @@
-document.querySelector('.select-first-of-type-section').addEventListener('click', e => {
-	let x = document.querySelector('.first-and-last-of-type-content');
-	let matched = x.querySelectorAll(' :first-of-type');
-	if (!matched[0].classList.contains('section-first-of-type')) {
-		matched.forEach(el => {
-			el.classList.add('section-first-of-type');
-		});
-		e.target.textContent = 'Enough of "section: first-of-type"';
-	} else {
-		matched.forEach(el => {
-			el.classList.remove('section-first-of-type');
-		});
-		e.target.textContent = 'checkout "section: first-of-type"';
-	}
-});
+let firstOrLastOfTypeButtons = document.querySelectorAll(`button[class*='type']`);
 
-document.querySelector('.select-last-of-type-section').addEventListener('click', e => {
-	let x = document.querySelector('.first-and-last-of-type-content');
-	let matched = x.querySelectorAll(' :last-of-type');
-	if (!matched[0].classList.contains('section-last-of-type')) {
-		matched.forEach(el => {
-			el.classList.add('section-last-of-type');
-		});
-		e.target.textContent = 'Enough of "section: last-of-type"';
-	} else {
-		matched.forEach(el => {
-			el.classList.remove('section-last-of-type');
-		});
-		e.target.textContent = 'checkout "section: last-of-type"';
-	}
+console.log(firstOrLastOfTypeButtons);
+
+updateFirstOrLastOfType = e => {
+	let firstOrLast = e.target.textContent.indexOf('first') > 1 ? 'first' : 'last';
+	let children = document.querySelector('.first-and-last-of-type-content').querySelectorAll(` :${firstOrLast}-of-type`);
+	children.forEach(el => {
+		el.classList.contains(`section-${firstOrLast}-of-type`)
+			? el.classList.remove(`section-${firstOrLast}-of-type`)
+			: el.classList.add(`section-${firstOrLast}-of-type`);
+	});
+	e.target.textContent =
+		e.target.textContent.indexOf('Enough') > -1
+			? `Checkout "section :${firstOrLast}-of-type"`
+			: `Enough of "section :${firstOrLast}-of-type"`;
+};
+
+firstOrLastOfTypeButtons.forEach(el => {
+	el.addEventListener('click', updateFirstOrLastOfType);
 });
 
 let firstOrLastChildButtons = document.querySelectorAll(`button[class*='child']`);
@@ -44,8 +34,8 @@ updateFirstOrLastChild = e => {
 	});
 	e.target.textContent =
 		e.target.textContent.indexOf('Enough') > -1
-			? `Check out section${firstOrLast}-child`
-			: `Enough of section${firstOrLast}-child`;
+			? `Check out section :${firstOrLast}-child`
+			: `Enough of section :${firstOrLast}-child`;
 };
 
 firstOrLastChildButtons.forEach(el => {
