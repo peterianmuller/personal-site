@@ -20,16 +20,24 @@
     </nav>
     <nav>
 
-	<section>
+	<section class="info">
+
+		<h2>first-of-type</h2>
+
 		<p>Let's talk about first of type! So What can be dope about this selector is we can choose DOM node and then select all the first elements of a certain type in a sibling set. What this means is that I can select all first appearences of paragraphs in a certain level on the DOM without accessing classes or id's.</p>
 
 		<p>The following text is wrapped in a section, and we can select all elements that first-of-type within that section by clicking the button below. Note that the button itself is not a child of the affected content.</p>
+
+		<h2>last-of-type</h2>
+
+		<p>Alternatively, we can select all elements that are the last of type of thier siblings. Similarly to </p>
+
 	</section>
 
-	<button class="select-first-of-type-body">check out "body: first-of-type"</button>
+	<button class="select-first-of-type-section">check out "section: first-of-type"</button>
+	<button class="select-last-of-type-section">check out "section: last-of-type"</button>
 	
-	<section class="first-of-type-content">
-
+	<section class="first-and-last-of-type-content">
 
 		<section>
 			<h1>Only H1 in this section</h1>
@@ -52,6 +60,40 @@
 		<section>
 			<h1>Only thing in this section</h1>
 		</section>
+
+	</section>
+
+	<hr>
+
+	<section class="info">
+
+		<h2>:first-child</h2>
+
+		<p>The :first-child structural selector will select the first child of the element we start with, as described by the element that appears to the left of the :</p>
+
+
+		<h2>:last-child</h2>
+
+		<p>The :last-child selector will select the last child of the element that we place to the left of the space before the colon.</p>
+
+	</section>
+
+	<button class="select-first-child">check out "section: first-child"</button>
+	<button class="select-last-child">check out "section: last-child"</button>
+
+	<section class="first-and-last-child-content">
+
+		<section>
+			<p>Rump tri-tip porchetta pancetta doner tongue, andouille bacon shoulder ball tip. Fatback rump sirloin burgdoggen, buffalo shankle shoulder filet mignon alcatra capicola spare ribs corned beef frankfurter shank strip steak. Pork chop cow pork belly capicola, pig pork loin salami drumstick. Filet mignon beef brisket cow shoulder leberkas. Pancetta short ribs frankfurter, kevin rump buffalo corned beef pastrami brisket burgdoggen picanha shankle.</p>
+			<p>Pork belly andouille ham burgdoggen, bacon t-bone prosciutto picanha shankle salami ground round porchetta. Kevin sirloin tenderloin filet mignon ball tip, turducken fatback leberkas short ribs swine tri-tip shankle kielbasa strip steak pork belly. Boudin fatback jerky tongue porchetta pig pancetta cow frankfurter shankle kielbasa. Fatback hamburger pancetta shoulder.</p>
+		</section>
+
+		<section>
+			<h3>First H3!</h3>
+			<p>Porchetta salami andouille sirloin, alcatra shoulder fatback ham capicola jerky ribeye tri-tip doner meatball. Corned beef ham hock fatback drumstick tail andouille pastrami strip steak, pig jerky pork. Shoulder meatloaf turkey pork loin ribeye. Corned beef kielbasa tail, picanha ball tip capicola spare ribs boudin t-bone prosciutto beef ribs sirloin venison. Doner rump jowl, ham hock tenderloin corned beef sirloin spare ribs frankfurter chicken filet mignon leberkas.</p>
+			<h3>Second H3!</h3>
+		</section>
+		
 
 	</section>
 

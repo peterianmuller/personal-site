@@ -1,0 +1,23 @@
+/* This selectrs the first appearence of any element. Thus we have selected the entire first section */
+
+.section-first-of-type {
+	color: hsla(360, 69%, 100%, 0.83);
+	text-decoration: underline;
+}
+
+.section-last-of-type {
+	color: hsla(50, 12%, 100%, 0.83);
+	font-weight: bold;
+}
+
+.section-first-child {
+	color: hsla(94, 100%, 26%, 1);
+	font-style: italic;
+}
+
+.section-last-child {
+	color: hsla(360, 100%, 26%, 1);
+	text-shadow: 2px 2px hsla(35, 100%, 26%, 1);
+}
+
+
