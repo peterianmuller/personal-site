@@ -1,0 +1,13 @@
+ol {
+	list-style: decimal;
+	width: 25%;
+	background: lightgrey;
+}
+
+li:nth-of-type(3n) {
+	text-align: center;
+}
+
+li:nth-child(1) {
+	text-decoration: underline;
+}
