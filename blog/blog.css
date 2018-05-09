@@ -3,12 +3,13 @@
 	border-width: 0.2em;
 	border: solid gray;
 	border-radius: 5px;
+	display: inline-block;
 	font-family: monospace;
 	font-size: 1.2em;
 	margin: 2em 0;
 	overflow: auto;
-	padding: 0.1em;
-	width: auto;
+	padding: 0.5em;
+	width: 60%;
 }
 
 .kw {
@@ -18,7 +19,6 @@
 	color: #009999;
 }
 
-* {
-	background: #fff;
+.css-rule {
+	margin-left: 2%;
 }
-

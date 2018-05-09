@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../../../../main.css">
+	<link rel="stylesheet" type="text/css" href="../../../blog.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title></title>
+</head>
+<body>
+
+	<nav class="primary-nav">
+     <ul>
+      <li><a href="../../../../index.html">Home</a></li>
+      <li><a href="../../../../blog/blogroll.html">Code Blog</a></li>
+      <li><a href="../../../../jm-photo/index.html">John Muller Photo</a></li>
+      <li><a href="../../../../music/index.html">Music</a></li>
+      <li><a href="../../../../spanish/index.html">Spanish Study</a></li>
+      <li><a href="../../../../reddit-api/index.html">The Best of Reddit</a></li>
+    </ul>
+   </nav>
+
+
+
+	<h2>Using :nth-of-type in a table element</h2>
+
+	<p>I was playing around with :nth-of-type as part of Estelle Way's great <a href='https://estelle.github.io/cssmastery' target="_blank">Css Mastery class</a>, and  wanted to exapnd on Estelle's excercise of applying styles to rows and columns of a table. </p>
+
+	<table class="original">
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+	</table>
+
+
+	<p>However, what if I wanted to apply different styles to the entire 5th row. I first tried to simply add some new styles that select that row only.</p>
+
+	<h4>Current Styles:</h4>
+
+	<section class="code-container code-container-blog">
+		table.fifth-row-partially-selected tr:nth-of-type(odd) td:nth-of-type(odd), <br>
+table.fifth-row-partially-selected tr:nth-of-type(even) td:nth-of-type(even) { <br>
+	<span class="css-rule">background-color: #900;</span> <br>
+	<span class="css-rule">color: #fff;</span> <br>
+}
+
+<br>
+
+table.fifth-row-partially-selected tr:nth-of-type(5) td { <br>
+	<span class="css-rule">background: linear-gradient(to right, #aaa111, #ddcc11);</span> <br>
+	<span class="css-rule">color: green;</span> <br>
+}
+
+</section>
+
+<p> Let's see why the first rules take precedence over the second set of rules. The way I'm targeting td elements in the first set of rules has a specificty of: 0 - 3 - 3. One class, two psudo-selectors (these both have the same specificity), and 3 elements. In the second list of selectors, I'm selecting one class, one psuedo selector, and 3 elements: 0 - 2 - 3.</p>
+
+
+<table class="fifth-row-partially-selected">
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+</table>
+
+<p>A cool thing we can do to correctly target all the td elements in our 5th row is to use the :not(selector) psudo selector.</p>
+
+
+<h3>Current Styles: </h3>
+
+<section class="code-container code-container-blog">
+
+	table.fifth-row-fully-selected tr:nth-of-type(odd):not(:nth-of-type(5)) td:nth-of-type(odd), <br>
+table.fifth-row-fully-selected tr:nth-of-type(even) td:nth-of-type(even) { <br>
+	<span class="css-rule">background-color: #900 </span>; <br>
+	<span class="css-rule">color: #fff; </span> <br>
+}
+
+<br>
+
+table.fifth-row-fully-selected tr:nth-of-type(5) td { <br>
+	<span class="css-rule">background: linear-gradient(to right, #aaa111, #ddcc11);</span> <br>
+	<span class="css-rule">color: green;</span> <br>
+} 
+	
+
+</section>
+
+<table class="fifth-row-fully-selected">
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+		<tr>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+			<td>cell</td>
+		</tr>
+</table>
+
+
+</body>
+</html>
