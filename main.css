@@ -239,9 +239,16 @@ a {
   ================================
 */
 
-.external-iframes {
-  margin: 20px;
+.content {
   text-align: center;
+  margin: 20px;
+}
+
+.content img {
+  width: 50%;
+}
+
+.external-iframes {
 }
 
 .external-iframes iframe {
