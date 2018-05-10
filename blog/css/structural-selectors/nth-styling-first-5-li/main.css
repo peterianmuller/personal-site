@@ -1,0 +1,16 @@
+a[href*='http']:after {
+	content: ' (' attr(href) ')';
+}
+
+ul.list-1 li {
+	font-weight: bold;
+}
+
+ul.list-1 li:nth-of-type(n + 6) {
+	font-weight: normal;
+}
+
+/* Go to the end and then go up b spots and start there. Now we decrement n*/
+ul.list-2 li:nth-last-of-type(n + 6) {
+	font-weight: bold;
+}
