@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+.parent {
+	display: flex;
+	height: 20em;
+
+	border: 2px solid orange;
+}
+
+.child {
+	text-align: center;
+	margin: auto;
+}
+
+.child img {
+	width: 95%;
+}
