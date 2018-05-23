@@ -15,5 +15,9 @@
 }
 
 .child img {
-	width: 95%;
+	width: 100%;
+}
+
+p a::after {
+	content: '(' attr(href) ')';
 }
