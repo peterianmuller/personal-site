@@ -360,6 +360,10 @@ button {
     font-size: 1em;
   }
 
+  .primary-nav ul li:nth-of-type(4) {
+    padding: 0 15px;
+  }
+
   h2 {
     margin-bottom: 8px;
   }
