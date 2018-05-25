@@ -131,6 +131,10 @@ table {
   background-color: rgb(105, 182, 236);
 }
 
+body {
+  font-size: 1.3em;
+}
+
 p,
 li {
   padding: 5px 0;
@@ -232,7 +236,7 @@ a {
 }
 
 .primary-nav ul li {
-  margin: 0 1.5em;
+  margin: 0.1em 1.5em;
 }
 
 /*
@@ -245,9 +249,13 @@ a {
   display: inline-block;
 }
 
+i.fas:first-of-type {
+  margin-left: 20px;
+}
+
 .fab,
 .fas {
-  margin: 10px 15px;
+  margin: 15px 20px;
   transform: scale(3, 3);
 }
 
