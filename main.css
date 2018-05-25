@@ -227,6 +227,7 @@ a {
 .primary-nav ul {
   margin: 0.5em 0;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
 }
 
@@ -343,8 +344,12 @@ button {
     margin: 0.8em;
   }
 
+  .primary-nav ul {
+    width: 100%;
+  }
+
   .primary-nav ul li {
-    padding: 8px 10px;
+    font-size: 1em;
   }
 
   h2 {
