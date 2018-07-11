@@ -5,3 +5,13 @@ document.querySelector(`[type='submit']`).addEventListener('click', e => {
 	};
 	console.log(results);
 });
+
+const audio = new Audio('I-do.mp3');
+
+document.querySelector('.play').addEventListener('click', () => {
+	audio.play();
+});
+
+document.querySelector('.pause').addEventListener('click', () => {
+	audio.pause();
+});

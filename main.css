@@ -310,7 +310,7 @@ button {
   ================================
 */
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 492px) {
   body {
     font-size: 4em;
     top: 10px;
