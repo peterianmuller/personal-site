@@ -26,3 +26,6 @@
 a {
 	text-transform: initial;
 }
+.primary-nav ul > li > a {
+	text-transform: capitalize;
+}
