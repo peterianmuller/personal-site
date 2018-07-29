@@ -1,15 +1,5 @@
-.col {
-  display: inline-block;
-}
-
 img {
-  max-height: 300px;
-  display: inline-block;
-  padding-right: 1px;
+	display: inline-block;
+	width: 100%;
 }
 
-#wave {
-  width: 704px;
-  position: relative;
-  height: 300px;
-}
