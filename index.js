@@ -7,8 +7,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', express.static(__dirname));
 
-app.get(`/.well-known/acme-challenge/QVKUIxs2RvIpleykacTJqX4-kXgK81jCQLbKdr1E-8s`, (req, res) => {
-	res.send(`${__dirname}/cert.txt`);
+app.get(`/.well-known/acme-challenge/Zzam5hmy_4ckg6bzMfUCtPmEeg8s59k2GTWCdsfqXuE`, (req, res) => {
+	res.send(`Zzam5hmy_4ckg6bzMfUCtPmEeg8s59k2GTWCdsfqXuE.5iP72yFceQ2O41wwpICeewxefMnleNW-FVoYnKGHl0Y`);
 });
 
 app.listen(process.env.PORT || 3000, function() {
