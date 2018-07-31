@@ -20,8 +20,8 @@ app.get(`/.well-known/acme-challenge/Zzam5hmy_4ckg6bzMfUCtPmEeg8s59k2GTWCdsfqXuE
 	res.send(`Zzam5hmy_4ckg6bzMfUCtPmEeg8s59k2GTWCdsfqXuE.5iP72yFceQ2O41wwpICeewxefMnleNW-FVoYnKGHl0Y`);
 });
 // both root domain and www
-app.get(`/.well-known/acme-challenge/NgZzsJBzFfoQY8eTLmoH70wSGHpcpt75CICVOQ-3t9s`, (req, res) => {
-	res.send(`NgZzsJBzFfoQY8eTLmoH70wSGHpcpt75CICVOQ-3t9s.5iP72yFceQ2O41wwpICeewxefMnleNW-FVoYnKGHl0Y`);
+app.get(`/.well-known/acme-challenge/pzAtfwTSQwaCGvMEYwX-HsNQTw1hNAt_BpgcAODnKas`, (req, res) => {
+	res.send(`pzAtfwTSQwaCGvMEYwX-HsNQTw1hNAt_BpgcAODnKas.5iP72yFceQ2O41wwpICeewxefMnleNW-FVoYnKGHl0Y`);
 });
 
 app.listen(process.env.PORT || 3000, function() {
