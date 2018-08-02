@@ -137,7 +137,8 @@ li {
 }
 
 hr.home {
-  border: 1px solid #4286f4;
+  border: 2px solid;
+  border-radius: 2px;
 }
 
 /*
@@ -257,6 +258,7 @@ a:visited {
 
 i.fas:first-of-type {
   margin-left: 20px;
+  color: #000;
 }
 
 .fab,
@@ -264,6 +266,8 @@ i.fas:first-of-type {
   margin: 15px 20px;
   transform: scale(3, 3);
 }
+
+.
 
 /*
   ================================
