@@ -175,14 +175,9 @@ div.header-container-1-3 {
   padding-bottom: 0;*/
 }
 
-
 .projects p {
   /*text-indent: 2em;*/
   margin-left: 3em;
-}
-
-h3 {
-  text-decoration: underline;
 }
 
 section.projects > a {
@@ -191,6 +186,7 @@ section.projects > a {
 
 section.img-container > img {
   width: 45%;
+  margin: 1em 0;
 }
 
 h3.work-header {
