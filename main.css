@@ -313,9 +313,13 @@ i.fas:first-of-type {
 */
 
 button {
-  border-radius: 15%;
-  padding: 1em 2em;
+  font-size: 1em;
+  padding: 0.5em 0.5em;
   margin: 1em 0;
+}
+
+input {
+  font-size: 1em;
 }
 
 /*
