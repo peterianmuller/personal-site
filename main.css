@@ -127,10 +127,6 @@ table {
   border-spacing: 0;
 }
 
-* {
-  background-color: rgb(105, 182, 236);
-}
-
 body {
   font-size: 1.3em;
 }
@@ -191,7 +187,7 @@ h3 {
 
 body {
   padding: 10px 15px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'EB Garamond', serif;
 }
 
 .primary-header {
@@ -222,6 +218,10 @@ a {
   text-transform: capitalize;
 }
 
+a:visited {
+  color: inherit;
+}
+
 /*
   ================================
   Header
@@ -229,6 +229,8 @@ a {
 */
 
 .primary-nav ul {
+  background-color: #000;
+  border-radius: 5px;
   margin: 0.5em 0;
   display: flex;
   flex-flow: row wrap;
@@ -237,6 +239,10 @@ a {
 
 .primary-nav ul li {
   margin: 0.1em 1.5em;
+}
+
+.primary-nav ul li a {
+  color: #fff;
 }
 
 /*
