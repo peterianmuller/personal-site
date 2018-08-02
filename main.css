@@ -141,6 +141,10 @@ hr.home {
   border-radius: 2px;
 }
 
+em {
+  font-style: italic;
+}
+
 /*
   ================================
   Images
