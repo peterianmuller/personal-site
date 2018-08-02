@@ -12,6 +12,10 @@
 	width: 60%;
 }
 
+.blog-links li a {
+	text-decoration: underline;
+}
+
 .kw {
 	color: #0000aa;
 }
