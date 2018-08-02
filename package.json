@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/peterianmuller/personal-site#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jquery": "^3.3.1",
+    "nba": "^4.2.2",
+    "nba.js": "^0.6.1",
     "nodemon": "^1.17.4",
     "npm": "^6.0.1"
   }
