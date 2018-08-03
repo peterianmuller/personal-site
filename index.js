@@ -54,7 +54,7 @@ app.get('/player-comparison', (req, res) => {
 	console.log(NBA.findPlayer);
 	console.log(player1);
 	console.log(player2);
-	console.log(N`BA.stats.playerInfo is:${NBA.stats.playerInfo}`);
+	console.log(`NBA.stats.playerInfo is:${NBA.stats.playerInfo}`);
 	NBA.stats.playerInfo({ PlayerID: player1.playerId }).then(response => {
 		console.log(`1st response is: ${response}`);
 		playersInfoAndStat.push(response);
