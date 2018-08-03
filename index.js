@@ -51,10 +51,16 @@ app.get('/player-comparison', (req, res) => {
 	let player1 = NBA.findPlayer(req.query.player1);
 	let player2 = NBA.findPlayer(req.query.player2);
 
+	console.log(NBA.findPlayer);
+	console.log(player1);
+	console.log(player2);
 	NBA.stats.playerInfo({ PlayerID: player1.playerId }).then(response => {
+		console.log(response);
 		playersInfoAndStat.push(response);
 		NBA.stats.playerInfo({ PlayerID: player2.playerId }).then(response => {
+			console.log(response);
 			playersInfoAndStat.push(response);
+			console.log(playersInfoAndStat);
 			res.send(playersInfoAndStat);
 		});
 	});
