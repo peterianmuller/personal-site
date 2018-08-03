@@ -46,6 +46,7 @@ app.get('/nba', (req, res) => {
 
 // get players data to compare
 app.get('/player-comparison', (req, res) => {
+	console.log('hello');
 	let playersInfoAndStat = [req.query.stat];
 	let player1 = NBA.findPlayer(req.query.player1);
 	let player2 = NBA.findPlayer(req.query.player2);

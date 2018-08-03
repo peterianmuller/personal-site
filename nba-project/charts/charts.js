@@ -3,6 +3,7 @@ document.querySelector(`.player-selection`).addEventListener(`click`, e => {
 	let player1 = document.querySelector(`select.list-1`).value;
 	let player2 = document.querySelector(`select.list-2`).value;
 	let stat = document.querySelector(`select:nth-of-type(3)`).value;
+	console.log('click detected');
 	$.ajax({
 		method: `GET`,
 		url: `/player-comparison`,
@@ -24,6 +25,7 @@ document.querySelector(`.player-selection`).addEventListener(`click`, e => {
 });
 
 const createChart = (stat, player1, player2, response) => {
+	console.log('working?');
 	expandStat = stat => {
 		return stat === 'pts' ? 'points per game' : 'rebounds per game';
 	};
