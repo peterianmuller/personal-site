@@ -4,6 +4,8 @@ document.querySelector(`.player-selection`).addEventListener(`click`, e => {
 	let player2 = document.querySelector(`select.list-2`).value;
 	let stat = document.querySelector(`select:nth-of-type(3)`).value;
 	console.log('click detected');
+	console.log(player1);
+	console.log(player2);
 	$.ajax({
 		method: `GET`,
 		url: `/player-comparison`,
