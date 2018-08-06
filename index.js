@@ -50,25 +50,20 @@ app.get('/player-comparison', (req, res) => {
 	let playersInfoAndStat = [req.query.stat];
 	let player1 = NBA.findPlayer(req.query.player1);
 	let player2 = NBA.findPlayer(req.query.player2);
-
-	console.log(NBA.findPlayer);
-	console.log(player1);
 	console.log(player2);
-	console.log(`NBA.stats.playerInfo is:${NBA.stats.playerInfo}`);
+	let id = player2.playerId;
 
-	NBA.stats.playerInfo({ PlayerID: player1.playerId }).then(response => {
-		console.log(`1st response is: ${response}`);
-	});
-	// NBA.stats.playerInfo({ PlayerID: player1.playerId }).then(response => {
-	// 	console.log(`1st response is: ${response}`);
-	// 	playersInfoAndStat.push(response);
-	// 	NBA.stats.playerInfo({ PlayerID: player2.playerId }).then(response => {
-	// 		console.log(`2nd response is: ${response}`);
-	// 		playersInfoAndStat.push(response);
-	// 		console.log(`playersInfoAndStat:${playersInfoAndStat}`);
-	// 		res.send(playersInfoAndStat);
-	// 	});
-	// });
+	// first need to get playerID
+	axios
+		.get(`http://data.nba.net/data/10s/prod/v1/2017/players/${id}_profile.json`)
+		.catch(function(error) {
+			console.log(`error is: ${error}`);
+		})
+		.then(response => {
+			console.log(response.data.league.standard);
+			res.send(response.data.league.standard);
+		});
+	// can't use nba.stats
 });
 
 app.listen(process.env.PORT || 3000, function() {

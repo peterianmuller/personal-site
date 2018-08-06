@@ -16,12 +16,6 @@ document.querySelector(`.player-selection`).addEventListener(`click`, e => {
 		},
 		success: res => {
 			console.log('res from api is:', res);
-			createChart(
-				res[0],
-				res[1].playerHeadlineStats[0].playerName,
-				res[2].playerHeadlineStats[0].playerName,
-				res.slice(1)
-			);
 		}
 	});
 });
