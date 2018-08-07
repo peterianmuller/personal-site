@@ -1,46 +1,43 @@
 document.querySelector(`.player-selection`).addEventListener(`click`, e => {
 	e.preventDefault();
-	let player1 = document.querySelector(`select.list-1`).value;
-	let player2 = document.querySelector(`select.list-2`).value;
+	var player1Name = document.querySelector(`select.list-1`).value;
+	var player2Name = document.querySelector(`select.list-2`).value;
 	let stat = document.querySelector(`select:nth-of-type(3)`).value;
 	console.log('click detected');
-	console.log(player1);
-	console.log(player2);
+	console.log(`player1 is: ${player1Name}`);
+	console.log(`player2 is: ${player2Name}`);
 	$.ajax({
 		method: `GET`,
 		url: `/player-comparison`,
 		data: {
-			player1: player1,
-			player2: player2,
+			player1: player1Name,
+			player2: player2Name,
 			stat: stat
 		},
 		success: res => {
 			console.log('res from api is:', res);
-			// createChart(
-			// 	res[0],
-			// 	res[1].playerHeadlineStats[0].playerName,
-			// 	res[2].playerHeadlineStats[0].playerName,
-			// 	res.slice(1)
-			// );
+			createChart(res[0], res[1][player1Name], res[2][player2Name], res.slice(1));
 		}
 	});
 });
 
 const createChart = (stat, player1, player2, response) => {
-	console.log('working?');
 	expandStat = stat => {
-		return stat === 'pts' ? 'points per game' : 'rebounds per game';
+		return stat === 'ppg' ? 'points per game' : 'rebounds per game';
 	};
 
-	console.log(`stat: ${stat}`);
-	let data = response.reduce((memo, curr) => {
+	console.log(`response is:`, response);
+	let data = response.reduce((memo, curr, i) => {
+		console.log(`curr:`, curr);
+
 		memo = memo.concat([
 			{
-				stat: curr.playerHeadlineStats[0][stat],
-				name: curr.commonPlayerInfo[0].displayFirstLast,
+				name: Object.keys(curr)[0],
+				stat: curr[Object.keys(curr)[0]].latest[stat],
 				statType: expandStat(stat)
 			}
 		]);
+
 		return memo;
 	}, []);
 

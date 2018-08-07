@@ -59,17 +59,15 @@ app.get('/player-comparison', (req, res) => {
 		})
 		.then(response => {
 			var player1Stats = response.data.league.standard;
-			var player1Name = `${player1.firstName} ${player1.lastName}`;
-			console.log(player1Name);
-			playersInfoAndStat.push({ [player1Name]: response.data.league.standard.stats });
+			playersInfoAndStat.push({ [player1.downcaseName]: response.data.league.standard.stats });
 			axios
 				.get(`http://data.nba.net/data/10s/prod/v1/2017/players/${player2.playerId}_profile.json`)
 				.catch(function(error) {
 					console.log(`error is: ${error}`);
 				})
 				.then(response => {
-					var player2Name = `${player2.firstName} ${player2.lastName}`;
-					playersInfoAndStat.push({ [player2Name]: response.data.league.standard.stats });
+					playersInfoAndStat.push({ [player2.downcaseName]: response.data.league.standard.stats });
+					console.log(playersInfoAndStat);
 					res.send(playersInfoAndStat);
 				});
 		});
