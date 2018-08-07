@@ -236,12 +236,12 @@ body {
   ================================
 */
 
-a {
+.primary-nav > ul > li > a {
   text-decoration: none;
-  text-transform: capitalize;
 }
-
+a,
 a:visited {
+  text-transform: capitalize;
   color: inherit;
 }
 
