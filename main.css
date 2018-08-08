@@ -161,6 +161,42 @@ em {
   ================================
 */
 
+.paths {
+  text-align: center;
+}
+
+.col1-2 {
+  width: 45%;
+}
+
+img.col1-2 {
+  width: 20%;
+}
+
+.paths {
+  display: relative;
+}
+
+.paths a:nth-of-type(1):after {
+  position: absolute;
+  content: 'Code';
+  top: 9.5em;
+  left: 18.2em;
+  font-size: 1.5em;
+  color: peru;
+  text-shadow: 1px 1px rebeccapurple, 2px 2px rebeccapurple, 3px 3px rebeccapurple, 4px 4px rebeccapurple;
+}
+
+.paths a:nth-of-type(2):after {
+  position: absolute;
+  content: 'Music';
+  top: 9.5em;
+  left: 24.5em;
+  font-size: 1.5em;
+  color: peru;
+  text-shadow: 1px 1px rebeccapurple, 2px 2px rebeccapurple, 3px 3px rebeccapurple, 4px 4px rebeccapurple;
+}
+
 div.header-container-2-3 {
   display: inline-block;
   text-align: left;
@@ -199,6 +235,10 @@ h3.work-header {
   ================================
 */
 
+h1 {
+  font-size: 2em;
+}
+
 h2 {
   font-size: 1.5em;
   padding: 5px 0;
@@ -215,6 +255,7 @@ body {
 
 .primary-header {
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .container {
