@@ -181,7 +181,7 @@ img.col1-2 {
   position: absolute;
   content: 'Code';
   top: 9.5em;
-  left: 18.2em;
+  left: 18.3em;
   font-size: 1.5em;
   color: peru;
   text-shadow: 1px 1px rebeccapurple, 2px 2px rebeccapurple, 3px 3px rebeccapurple, 4px 4px rebeccapurple;
@@ -326,8 +326,6 @@ i.fas:first-of-type {
   margin: 15px 20px;
   transform: scale(3, 3);
 }
-
-.
 
 /*
   ================================
