@@ -162,7 +162,11 @@ em {
 */
 
 .paths {
+  width: 50%;
+  margin: 0 auto;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .col1-2 {
@@ -173,28 +177,8 @@ img.col1-2 {
   width: 20%;
 }
 
-.paths {
-  display: relative;
-}
-
-.paths a:nth-of-type(1):after {
-  position: absolute;
-  content: 'Code';
-  top: 9.5em;
-  left: 18.3em;
-  font-size: 1.5em;
-  color: peru;
-  text-shadow: 1px 1px rebeccapurple, 2px 2px rebeccapurple, 3px 3px rebeccapurple, 4px 4px rebeccapurple;
-}
-
-.paths a:nth-of-type(2):after {
-  position: absolute;
-  content: 'Music';
-  top: 9.5em;
-  left: 24.5em;
-  font-size: 1.5em;
-  color: peru;
-  text-shadow: 1px 1px rebeccapurple, 2px 2px rebeccapurple, 3px 3px rebeccapurple, 4px 4px rebeccapurple;
+.paths a h2 {
+  align-self: center;
 }
 
 div.header-container-2-3 {
@@ -268,13 +252,31 @@ body {
   width: 63%;
 }
 
+@supports (display: grid) {
+  .container {
+    display: grid;
+  }
+
+  .primary-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+
+  .primary-header > * {
+    flex: 1;
+    align-self: center;
+  }
+}
+
 /*
   ================================
   Links
   ================================
 */
 
-.primary-nav > ul > li > a {
+.primary-nav > ul > li > a,
+a {
   text-decoration: none;
 }
 a,
@@ -378,12 +380,28 @@ input {
 
 /*
   ================================
+  Code Landing page
+  ================================
+*/
+
+.nav-logo img {
+  display: inline-block;
+  width: 2em;
+}
+
+h1 {
+  display: inline-block;
+}
+
+/*
+  ================================
   Devices
   ================================
 */
 
-@media screen and (max-width: 720px) {
+@media only screen and (max-width: 600px) {
   body {
+    background-color: green;
     font-size: 4em;
     top: 10px;
   }
@@ -414,9 +432,6 @@ input {
   }
   section.col-2-3.projects {
     display: none;
-
-    /*currently removing projects info on mobile*/
-    /*width: auto;*/
   }
 
   nav.primary-nav-footer ul li a i {
@@ -438,5 +453,9 @@ input {
 
   h2 {
     margin-bottom: 8px;
+  }
+
+  img.col1-2 {
+    width: 45%;
   }
 }
