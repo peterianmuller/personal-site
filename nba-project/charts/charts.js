@@ -60,7 +60,7 @@ const createChart = (stat, player1, player2, response) => {
 		.attr('height', function(d, i) {
 			return d.stat * 10;
 		})
-		.attr('width', '65')
+		.attr('width', '85')
 		.attr('x', function(d, i) {
 			return i * 90 + 30;
 		})
@@ -74,11 +74,11 @@ const createChart = (stat, player1, player2, response) => {
 		.enter()
 		.append('text')
 		.text(function(d) {
-			return `${d.name.split(' ')[0][0]}${d.name.split(' ')[1][0]}: ${d.stat}`;
+			return `${d.name.split(' ')[0][0].toUpperCase()}${d.name.split(' ')[1][0].toUpperCase()}: ${d.stat}`;
 		})
 		.attr('class', 'text')
 		.attr('x', function(d, i) {
-			return i * 90 + 28;
+			return i * 90 + 30;
 		})
 		.attr('y', function(d, i) {
 			return 320 - d.stat * 8;
