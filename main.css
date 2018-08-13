@@ -201,11 +201,6 @@ section.projects > a {
   text-decoration: underline;
 }
 
-section.img-container > a > img {
-  width: 15em;
-  margin: 1em 0;
-}
-
 h3.work-header {
   margin: 1em 0;
 }
@@ -277,7 +272,7 @@ body {
 
 .primary-nav > ul > li > a,
 a {
-  text-decoration: none;
+  text-decoration: underline;
 }
 a,
 a:visited {
@@ -341,7 +336,7 @@ i.fas:first-of-type {
 
 /*
   ================================
-  Music
+  Music Pages
   ================================
 */
 
@@ -384,6 +379,16 @@ input {
   ================================
 */
 
+section.img-container > a > img,
+section.last-row-code-home > a:last-of-type > img {
+  width: 15em;
+  margin: 1em 0;
+}
+
+.last-row-code-home {
+  text-align: center;
+}
+
 .nav-logo img {
   display: inline-block;
   width: 2em;
@@ -391,6 +396,12 @@ input {
 
 h1 {
   display: inline-block;
+}
+
+.vineyard-img {
+  margin: 1em 0;
+  width: 15em;
+  height: 195px;
 }
 
 /*
