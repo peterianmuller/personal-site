@@ -379,9 +379,13 @@ input {
   ================================
 */
 
+.img-container {
+  text-align: center;
+}
+
 section.img-container > a > img,
 section.last-row-code-home > a:last-of-type > img {
-  width: 15em;
+  width: 18em;
   margin: 1em 0;
 }
 
@@ -401,7 +405,7 @@ h1 {
 .vineyard-img {
   margin: 1em 0;
   width: 15em;
-  height: 195px;
+  height: 234px;
 }
 
 /*
