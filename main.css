@@ -336,9 +336,17 @@ i.fas:first-of-type {
 
 /*
   ================================
-  Music Pages
+  Music landing page
   ================================
 */
+
+.primary-header-music {
+  display: flex;
+}
+
+.primary-header-music > * {
+  flex-grow: 1;
+}
 
 .content {
   text-align: center;
