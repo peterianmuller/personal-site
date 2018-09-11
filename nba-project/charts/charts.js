@@ -47,7 +47,7 @@ const createChart = (stat, player1, player2, response) => {
 		.select('body')
 		.append('svg')
 		.attr('height', '300px')
-		.attr('class', 'col-1-3')
+		.attr('width', '300px')
 		.style('border', '1px solid')
 		.style('border-radius', '5px');
 
@@ -101,10 +101,10 @@ const createChart = (stat, player1, player2, response) => {
 		.append('svg')
 		.append('text')
 		.text(function() {
-			return `close`;
+			return `X`;
 		})
 		.attr('x', function(d, i) {
-			return 270;
+			return 265;
 		})
 		.attr('y', function(d, i) {
 			return 25;
