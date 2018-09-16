@@ -436,7 +436,7 @@ h1 {
   ================================
 */
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   body {
     background-color: green;
     font-size: 4em;
@@ -494,5 +494,5 @@ h1 {
 
   img.col1-2 {
     width: 45%;
-  }
+  }*/
 }
