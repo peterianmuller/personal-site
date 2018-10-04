@@ -276,6 +276,10 @@ a:visited {
   color: inherit;
 }
 
+a#upBreaks {
+  text-transform: none;
+}
+
 /*
   ================================
   Header
