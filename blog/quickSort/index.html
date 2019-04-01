@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <div>
+    <h1>Quick Sort: A Blog Post</h1>
+    <p>The idea of quick sort is to choose a pivot element. We then put the element in the right place in the eventually sorted array. When that element is placed in the right place all elements to the left of the pivot element will be less than the pivot. All elements to the right of the pivot will be greater than the element.</p>
+    <p>We then return the index where the pivot ended up in it's correct place. We then invoke our <code>pivotLocator</code> function on the left-hand side and the right hand side of the partially sorted array.</p>
+    <pre>
+		swap = (arr,idx,idx2) => {
+			[arr[idx1], arr[idx2]] = [arr[idx2] = arr[idx1]]		
+		};
+
+		pivotLocator = (arr, start = 0, end = arr.length) => {
+			let pivot = arr[start], pivotIndex = 0;
+
+			for (let i = 0; i < end; i++) {
+				if (pivot > arr[i]) {
+					pivotIndex++;
+					swap(arr, i, pivotIndex);
+				}
+			}
+			swap(arr,start, pivotIndex);	
+			return pivotIndex;
+		}
+
+		quickSort = (arr, start = 0, end = arr.length) => {
+			// we want to work our way towards a start and end that meet each other
+			if (start > end) {
+				return arr; 
+			}
+			let pivot = pivotLocator(arr);
+			quickSort(arr, start, pivot -1);
+			quickSort(arr, pivot + 1, end);
+		}	
+	</pre>
+	<p>A few things to consider: If we don't decrement the pivot as the end argument for the left side recursion and increment the pivot as the start of the right-hand side recursion we'll run into an in infinite loop. This is because start and end will never meet.</p>
+  </div>
+</body>
+
+</html>

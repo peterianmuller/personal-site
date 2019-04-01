@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>MergeSort derives from the truth that an array of one or 0 elements represents a sorted array. Merge Sort is an algorithm that uses a helper function merge that merges two sorted arrays. We run this merge on the left hand side of the array then run mergeSort on the right side of the array. We then return one final merge at the end of the mergseSort function. The final call will eventually be the merge on the sorted left hand side of the array and the sorted right hand side</p>
+
+	<pre>
+merge = (sortedArr1, sortedArr2) => {
+	let mergedSortedArray = [],
+		i = 0,
+		j = 0;
+	// while sortedArr1 and sortedArr2 both have a length
+	while (i < sortedArr1.length && j < sortedArr2.length) {
+		// check if sortedArr1 at index i is greater than sortedArr2 at index j
+		if (sortedArr1[i] < sortedArr2[j]) {
+			// if true push element in sortedArr1 at index i to mergedSortedArray
+			mergedSortedArray.push(sortedArr1[i]);
+			i++;
+		} else {
+			// else push element in sortedArr2 at index j to mergedSortedArray
+			mergedSortedArray.push(sortedArr2[j]);
+			j++;
+		}
+	}
+	// iterate over remainder of sortedArr1 and push each element into mergedSortedArray
+	while (i < sortedArr1.length) {
+		mergedSortedArray.push(sortedArr1[i]);
+		i++;
+	}
+	// iterate over remainder of sortedArr2 and push each element into mergedSortedArray
+	while (j < sortedArr2.length) {
+		mergedSortedArray.push(sortedArr2[j]);
+		j++;
+	}
+	return mergedSortedArray;
+};
+
+mergeSort = arr => {
+	// if arr is length of 1
+	if (arr.length === 1) {
+		// return arr
+		return arr;
+	}
+	// invoke mergeSort on left half of arr
+	let left = mergeSort(arr.slice(0, Math.floor(arr.length / 2)));
+	// invoke mergeSort on right half of arr
+	let right = mergeSort(arr.slice(Math.floor(arr.length / 2)));
+	// return merge of left and right
+	return merge(left, right);
+};
+	</pre>
+
+
+	<pre>
+		
+	</pre>
+
+	<p>
+		Time Complexity is O(n log n). We have n comparisons for log n subarrays. It takes us log base 2 of n to get to arrays of length one. For an array of length 4 is takes 2 decompositions. For an array of length 8 it takes 3 decompositions to get down to arrays of length 1.
+	</p>
+
+</body>
+
+<script type="text/javascript">
+	let merge = (arr1, arr2) => {
+		let sortedAndMerged = [];
+		let i = 0, j = 0;
+		// if both arr1 and arr2 still both have elements left
+		while ( i < arr1.length && j < arr2.length) {
+			// if arr1 at index 1 is less than arr2 at index j
+			if (arr1[i] < arr2[j]) {
+				// push arr1 at index i to sortedAndMerged
+				sortedAndMerged.push(arr1[i]);
+				// increment i
+				i++;
+			} else {
+				// else push arr2 at index j to sortedAndMerged
+				sortedAndMerged.push(arr2[j]);
+				// increment j			
+				j++;
+			}
+		}
+		while (i < arr1.length) {
+			// iterate over remainder of arr1 and push each element into sortedAndMerged
+			sortedAndMerged.push(arr1[i]);
+			i++;
+		}
+
+		// iterate over remainder of arr2 and push each element into sortedAndMerged
+		while (j < arr2.length) {
+			sortedAndMerged.push(arr2[j]);
+			j++;
+		}
+
+		// return sortedAndMerged
+		return sortedAndMerged
+	}
+
+	// here we are just getting the left hand side of the array and the right hand side of the array. But we are not sorting those sides. We're also just eventually returning the first element. 
+	let mergeSort2 = arr => {
+		if (arr.length === 1) {
+			return arr;
+		}
+		let left = arr.slice(0, (Math.floor(arr.length /2)));
+		let right = arr.slice((Math.floor(arr.length /2)));
+		return mergeSort(left, right);
+	}
+
+	// here we are recursively sorting the left and right hand sides of the equation. We're then returning the merge of the sorted l and r sides. Above, we are returning mergeSort itself, which will return an array with a length of 1 per the basecase.
+	let mergeSort = arr => {
+		if (arr.length === 1) {
+			return arr;
+		}
+		// sort the entire left hand side of the array. We'll eventually get to the merge call that is returned at end of this function, which will sort the entire left hand side -> It'll pass the left hand side of the left half and the right hand side of the right half.
+		let left = mergeSort(arr.slice(0, (Math.floor(arr.length /2))));
+		let right = mergeSort(arr.slice((Math.floor(arr.length /2))));
+		return merge(left, right);
+	}
+
+
+	mergeSort([9,0,7,2]);
+
+
+
+</script>
+</html>
