@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<h1>Big O</h1>
+		<p>
+			Big O is a standardized way to measure the efficiency of algorithms. A simple way to figure out how many
+			operations a program has to do would be to keep track of operations via some sort of variable.
+		</p>
+
+		<pre>
+			function printEachNumberTwice(n) {
+				var ops = 1;
+				for (let i = 0; i < n; i++) {
+					console.log('i is:', i);
+					ops++;
+				}
+				for (let i = 0; i < n; i++) {
+					console.log('i is:', i);
+					ops++;
+				}
+				// here we see the number of operations relative to the input size
+		 		console.log(Math.floor(ops / n));
+			}
+
+			printEachNumberTwice(5); // 2
+			printEachNumberTwice(10); // 2
+			printEachNumberTwice(50); // 2
+
+		</pre
+		>
+
+		<p>
+			We see that each time, we essentially do twice the work of the input size. What's import here is that the work
+			will always be twice the input size, both for small inputs and large inputs
+		</p>
+
+		<p>Next we can take a look at what happens when we have a nested loop.</p>
+
+		<pre>
+			function printPairs(n) {
+				var ops = 0;
+				for (var i = 0; i < n; i++) {
+					ops++;
+					for (var j = 0; j < n; j++) {
+						//console.log(i, j);
+						ops++;
+					}
+			}
+				// here, the number of ops divided by n changes because we have more operations
+				// per each increase of n
+				console.log(Math.floor(ops / n));
+			}
+
+			printPairs(5) // 6 AKA n + 1
+			printPairs(16) // 15 AKA n + 1
+			printPairs(51) // 50 AKA n + 1
+
+		</pre
+		>
+
+		<p></p>
+	</body>
+</html>
