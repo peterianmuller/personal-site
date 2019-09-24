@@ -270,6 +270,9 @@ body {
 a {
   text-decoration: underline;
 }
+.paths a {
+  text-decoration: none;
+}
 a,
 a:visited {
   text-transform: capitalize;
