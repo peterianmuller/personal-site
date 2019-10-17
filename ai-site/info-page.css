@@ -1,0 +1,277 @@
+h1.header-word {
+	font-size: 5em;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 3em;
+	margin: 0;
+}
+
+h2 {
+	font-weight: 500;
+	font-size: 3em;
+	margin: 0;
+}
+
+.range-mobile {
+	display: none;
+}
+
+.container {
+	max-width: 85%;
+	margin: 0 auto;
+}
+
+.main-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.cell {
+	width: 300px;
+	flex: 1 auto;
+	padding: 10px;
+	border: 1px solid red;
+}
+
+.main-header h2 {
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.services ul,
+.clients ul {
+	list-style: none;
+	font-size: 1.5em;
+}
+
+.services > ul > li {
+	font-weight: 400;
+	margin: 1.5% 0;
+}
+
+img {
+	padding: 0.5em;
+	width: 14em;
+}
+
+.clients-mobile {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.end {
+	max-width: 60%;
+	text-align: center;
+}
+
+h1 {
+	display: inline-block;
+}
+
+h1.header-word {
+	margin-left: 0 auto;
+}
+
+.header-container {
+	margin-top: 3%;
+	/*text-align: center;*/
+	position: relative;
+	margin-left: 5.8em;
+}
+
+.client-icons ul li {
+	display: inline-block;
+}
+
+.header-abbreviation {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.end {
+	margin: 0 auto;
+	font-weight: 400;
+}
+
+i {
+	color: #1787a5;
+	font-size: 5em;
+	margin: 1%;
+}
+
+ul {
+	list-style: none;
+}
+
+.contact ul li {
+	font-size: 1.5em;
+	font-weight: 400;
+}
+
+.client-icons {
+	padding-left: 40px;
+	text-align: center;
+}
+
+.clients ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.clients ul:nth-of-type(1),
+.clients-mobile ul:nth-of-type(1) {
+	margin-bottom: 0.7em;
+}
+
+.clients ul li,
+.clients-mobile ul li {
+	align-self: center;
+}
+
+.large {
+	height: 307px;
+}
+
+.end {
+	margin-top: 4em;
+}
+
+.end img {
+	font-size: 30%;
+	margin: 0 0.5em;
+}
+
+.end img.email {
+	font-size: 35%;
+	padding-bottom: 0.2em;
+}
+
+.end p {
+	font-size: 0.7em;
+}
+
+ul {
+	padding: 0;
+}
+
+.services h2 a h1 {
+	font-size: inherit;
+}
+
+.heading {
+	font-size: 3em;
+	margin-left: 1em;
+}
+
+ul {
+	margin-left: 3.9em;
+}
+
+.clients ul,
+.clients-mobile ul {
+	margin-left: 0;
+	padding-left: 3.9em;
+}
+
+.contact ul {
+	margin-left: 5.8em;
+}
+
+.mobile-end {
+	display: none;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1025px) {
+	html::before {
+		content: ' ';
+		display: block;
+		background-image: url('/nc_assets/img/AI-pics/paul-tiny.jpg');
+		background-position: bottom left;
+		background-size: cover;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: fixed;
+		z-index: -10;
+	}
+
+	.header-container {
+		margin-left: 0;
+	}
+	h1.header-word {
+		font-size: 4em;
+		margin-left: 1.7em;
+	}
+
+	.services > ul {
+		margin-left: 4.4em;
+	}
+
+	.services > ul > li {
+		font-size: 1.6em;
+	}
+
+	.contact ul {
+		margin-left: 6.5em;
+	}
+
+	.contact > ul > li {
+		font-size: 2.3em;
+	}
+
+	.mobile-end {
+		display: block;
+		margin: 1%;
+	}
+
+	.desktop-end {
+		display: none;
+	}
+
+	.clients {
+		display: none;
+	}
+
+	.gallery a {
+		flex: 1 0 40%;
+	}
+
+	.gallery-heading {
+		/* display: none; */
+	}
+
+	.clients-mobile {
+		/*	display: block; */
+	}
+
+	.clients-mobile > ul {
+		height: 204px;
+	}
+
+	.clients-mobile ul {
+		margin-left: 3em;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.services ul:nth-of-type(2) {
+		display: none;
+	}
+
+	.range-mobile {
+		display: block;
+	}
+
+	.intro-text {
+		display: block;
+	}
+}
