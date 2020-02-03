@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .inline-code {
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>The Problem</h2>
+
+    <p>
+      "findLongestSubstring accepts a string and returns the length of the
+      longest substring with all distinct characters"
+    </p>
+
+    <p>
+      This is a problem that requires a dynamic sized window. We also get to use
+      an extrernal data structure to keep track of the last time that we have
+      seen a certain character
+    </p>
+
+    <pre>findLongestSubstring('rithmschool')</pre>
+
+    <p>
+      Should yeild us 7 which is the length of the substring
+      <span class="inline-code">'rithmsc'</span>. This substring stops at the
+      next h character because we already have seen an h.
+    </p>
+
+    <p>
+      A way to think about this with the perscpective of the sliding window is
+      that we could have one pointer, i, at the start of the string and another
+      pointer, j, incrementing by one.
+    </p>
+
+    <pre>
+'rithmschool'
+ i 
+ j
+    </pre>
+
+    <p>
+      We could also keep track of each character we've seen at each index via an
+      object. As we increment the j pointer we populate the object. All is well
+      and good until we get to the second h. We can also figure out the longest
+      substring of non-repeating characters each time we iterate j
+    </p>
+
+    <pre>
+longest = j - i + 1
+longrst = 6 - 0 + 1 = 7          
+seen = {'r':0, 'i': 1, 't':2, 'h':3, 'm':4, 's':5, 'c':6}
+
+'rithmschool'
+ i 
+       j
+    </pre>
+
+    <p>
+      Now what happens when we reach that second 'h'? At this point we need to
+      move our start pointer up. We'll move it to the previous character we've
+      seen and then move it up once
+    </p>
+
+    <pre>
+
+    'rithmschool'
+     i 
+           j
+
+    // Move j up to the second h and check seen object
+    let j = 7
+    str[j] = 'h'
+    seen[j] = 3
+    i = 3 + 1     
+
+    'rithmschool'
+         i 
+            j
+
+    </pre>
+
+    <p>Then we move up j and we do end up encountering two 'o' characters:</p>
+
+    <pre>
+    seen = {'r':0, 'i': 1, 't':2, 'h':7, 'm':4, 's':5, 'c':6, 'o':8}
+
+   'rithmschool'
+        i 
+            j
+
+    // Increment j
+    let j = 9
+    str[j] = 'o'
+    seen['o'] = 8
+    i = 8 + 1 = 9
+
+     'rithmschool'
+               i 
+              j
+    </pre>
+
+    <p>Hence our code could look like:</p>
+
+    <pre>
+
+function findLongestSubstring(str) {
+  let start = 0,
+    end = 0,
+    seen = {},
+    longest = 0;
+  while (end < str.length) {
+    let char = str[end];
+    if (seen.hasOwnProperty(char)) {
+      start = seen[char] + 1;
+    }
+    seen[char] = end;
+    longest = Math.max(longest, end - start + 1);
+    end++;
+  }
+  return longest;
+}
+    </pre>
+
+    <p>Ok Nice! Let's talk though a few examples</p>
+
+    <p>What about the following exmaple:</p>
+
+    <pre>findLongestSubstring('longestSubstring')</pre>
+
+    <p>
+      The issue here is that if we reassign start to the last time we saw a
+      character (plus one) We actually could be moving our start to the left.
+      This leads to a larger window than is correct.
+    </p>
+
+    <pre>
+
+function findLongestSubstring(str) {
+  let start = 0,
+    end = 0,
+    seen = {},
+    longest = 0;
+  while (end < str.length) {
+    let char = str[end];
+    if (seen.hasOwnProperty(char)) {
+      start = Math.max(start, seen[char] + 1)
+      //start = seen[char] + 1;
+    }
+    seen[char] = end;
+    longest = Math.max(longest, end - start + 1);
+    end++;
+  }
+  return longest;
+}
+    </pre>
+  </body>
+</html>
