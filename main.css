@@ -141,13 +141,22 @@ a {
   text-decoration: none;
 }
 
-hr.home {
-  border: 2px solid;
-  border-radius: 2px;
-}
-
 em {
   font-style: italic;
+}
+
+p {
+  line-height: 1.4;
+}
+
+/*
+  ================================
+  Nav
+  ================================
+*/
+
+.primary-nav {
+  padding: 0 2rem;
 }
 
 @media screen and (max-width: 701px) {
@@ -158,6 +167,88 @@ em {
     display: flex;
     flex-direction: column;
     margin: 1rem;
+  }
+}
+
+/*
+  ================================
+  Bio
+  ================================
+*/
+
+section.bio {
+  display: flex;
+}
+
+section.bio div.photo {
+  max-width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.bio div.photo img {
+  width: 50%;
+  min-height: 200px;
+}
+
+div.text {
+  display: flex;
+  align-items: center;
+}
+
+/*
+  ================================
+  code content
+  ================================
+*/
+
+.card {
+  background: white;
+  margin-bottom: 2em;
+}
+
+.card a {
+  color: black;
+  text-decoration: none;
+}
+
+.card img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto;
+}
+
+.card a:hover {
+  box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+}
+
+.card-content {
+  padding: 1.4em;
+}
+
+.card-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.card-content p {
+  font-size: 80%;
+}
+
+/* Flexbox stuff */
+
+@media screen and (min-width: 40em) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card {
+    flex: 0 1 calc(50% - 1em);
   }
 }
 
@@ -191,7 +282,8 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 860px;
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
@@ -201,23 +293,6 @@ body {
 
 .col-2-3 {
   width: 63%;
-}
-
-@supports (display: grid) {
-  .container {
-    display: grid;
-  }
-
-  .primary-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
-  }
-
-  .primary-header > * {
-    flex: 1;
-    align-self: center;
-  }
 }
 
 /*
@@ -261,33 +336,12 @@ a {
   border-radius: 5px;
   margin: 0.5em 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .logo {
   width: 40px;
-}
-
-/*
-  ================================
-  Footer
-  ================================
-*/
-
-.primary-nav-footer ul li {
-  display: inline-block;
-}
-
-i.fas:first-of-type {
-  margin-left: 20px;
-  color: #000;
-}
-
-.fab,
-.fas {
-  margin: 15px 20px;
-  transform: scale(3, 3);
 }
 
 /*
@@ -376,20 +430,6 @@ h1 {
 .column img {
   margin-top: 8px;
   vertical-align: middle;
-}
-
-/*
-  ================================
-  Lifestyle page
-  ================================
-*/
-
-.lifestyle-images {
-  display: flex;
-}
-
-.lifestyle-images > * {
-  align-self: center;
 }
 
 /*
